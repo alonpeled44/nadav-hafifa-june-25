@@ -2,11 +2,60 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /*pls dont kill me for this*/
 }
 
 :root,
 html,
-body {
+body,
+body > div {
   height: 100vh;
   width: 100vw;
 }
+
+body > div {
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+
+  & main {
+    height: 0;
+    width: 100%;
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 0.6rem;
+
+    & body {
+      background-image: none;
+
+      & header {
+        display: none;
+      }
+
+      & main {
+        & form {
+          height: 100%;
+          width: 100%;
+
+          display: flex;
+          justify-content: space-evenly;
+
+          border-radius: 0;
+
+          background-color: rgba(40, 40, 140, 0.1);
+        }
+      }
+    }
+  }
+}*/
