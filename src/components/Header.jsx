@@ -1,6 +1,14 @@
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
+  const newDate = new Date();
+  const currentDate =
+    newDate.getDate() +
+    "/" +
+    (newDate.getMonth() + 1) +
+    "/" +
+    newDate.getFullYear();
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -8,7 +16,7 @@ export default function Header() {
         <h1>pokémon</h1>
       </div>
 
-      <p className={styles["display-date"]}>date placeholder</p>
+      <p className={styles["display-date"]}>{currentDate}</p>
     </header>
   );
 }
