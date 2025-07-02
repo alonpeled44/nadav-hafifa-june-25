@@ -8,7 +8,7 @@ export default function Header() {
         <h1>pokémon</h1>
       </div>
 
-      <p className={styles["display-date"]}></p>
+      <p className={styles["display-date"]}>date placeholder</p>
     </header>
   );
 }

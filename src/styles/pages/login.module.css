@@ -13,7 +13,7 @@
   align-items: center;
 
   .login-form {
-    height: fit-content;
+    height: 60%;
     width: 860px;
 
     display: flex;
@@ -110,47 +110,64 @@
     }
   }
 
-  .login-text {
-    display: none;
-  }
+  .form-wrapper {
+    height: 100%;
+    width: 100%;
 
-  .inputs {
-    width: 90%;
-
-    gap: 64px;
-
-    & input {
-      height: 48px;
-
-      font-size: 4rem;
-    }
-
-    & .error {
-      font-size: 3rem;
-    }
-  }
-
-  & .buttons {
-    height: 25%;
-    width: 80%;
-
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-
-    & button {
-      height: 40%;
-
-      font-size: 3rem;
-
-      background-color: rgba(20, 20, 120, 0.2);
-    }
-    & .user-login {
-      width: 60%;
-    }
-
-    & .guest-login {
+    .login-form {
+      height: 100%;
       width: 100%;
+
+      display: flex;
+      justify-content: space-evenly;
+
+      border-radius: 0;
+
+      background-color: rgba(40, 40, 140, 0.1);
+
+      .login-text {
+        display: none;
+      }
+
+      .inputs {
+        width: 90%;
+
+        gap: 64px;
+
+        & input {
+          height: 48px;
+
+          font-size: 4rem;
+        }
+
+        & .error {
+          font-size: 3rem;
+        }
+      }
+
+      & .buttons {
+        height: 25%;
+        width: 80%;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        & button {
+          height: 40%;
+
+          font-size: 3rem;
+
+          background-color: rgba(20, 20, 120, 0.2);
+        }
+        & .user-login {
+          width: 60%;
+        }
+
+        & .guest-login {
+          width: 100%;
+        }
+      }
     }
   }
 }
