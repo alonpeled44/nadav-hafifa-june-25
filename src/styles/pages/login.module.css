@@ -1,7 +1,3 @@
-.logo-phone {
-  display: none;
-}
-
 .form-wrapper {
   height: 0px;
   width: 100%;
@@ -12,7 +8,7 @@
   justify-content: center;
   align-items: center;
 
-  .login-form {
+  & .login-form {
     height: 60%;
     width: 860px;
 
@@ -26,6 +22,10 @@
     border-radius: 24px;
 
     background-color: rgba(255, 255, 255, 0.9);
+
+    & .logo-phone {
+      display: none;
+    }
 
     & > h1 {
       font-size: 4.5rem;
@@ -95,26 +95,11 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .logo-phone {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    & img {
-      height: 64px;
-      aspect-ratio: 1 / 1;
-    }
-
-    h1 {
-      font-size: 5rem;
-    }
-  }
-
   .form-wrapper {
     height: 100%;
     width: 100%;
 
-    .login-form {
+    & .login-form {
       height: 100%;
       width: 100%;
 
@@ -125,11 +110,26 @@
 
       background-color: rgba(40, 40, 140, 0.1);
 
-      .login-text {
+      & .logo-phone {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        & img {
+          height: 64px;
+          aspect-ratio: 1 / 1;
+        }
+
+        & h1 {
+          font-size: 5rem;
+        }
+      }
+
+      & .login-text {
         display: none;
       }
 
-      .inputs {
+      & .inputs {
         width: 90%;
 
         gap: 64px;
@@ -160,6 +160,7 @@
 
           background-color: rgba(20, 20, 120, 0.2);
         }
+
         & .user-login {
           width: 60%;
         }
