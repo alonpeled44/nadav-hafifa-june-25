@@ -32,8 +32,7 @@ export default function Login() {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-  });
-  useEffect(() => {
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };

@@ -7,8 +7,7 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-  });
-  useEffect(() => {
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
