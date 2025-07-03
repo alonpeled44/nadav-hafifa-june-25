@@ -6,7 +6,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [windowWidth, setWindowWidth] = useState(1400);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +30,9 @@ export default function Login() {
     location.reload();
   };
 
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  });
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
