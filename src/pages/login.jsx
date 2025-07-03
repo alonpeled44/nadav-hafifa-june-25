@@ -15,9 +15,10 @@ export default function Login() {
 
     if (foundUser) {
       if (foundUser.pass === password) {
-        const currentUser = { username, password };
-        alert("welcome, " + username);
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({ username, password })
+        );
         window.location.href = "/";
       } else {
         setErrorMessage("username and password do not match");
@@ -29,6 +30,7 @@ export default function Login() {
 
   const handleGuestLogin = () => {
     alert("welcome, guest");
+    localStorage.setItem;
     window.location.href = "/";
   };
 
