@@ -2,11 +2,42 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 :root,
 html,
-body {
+body,
+body > div {
   height: 100vh;
   width: 100vw;
+}
+
+body > div {
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+
+  & main {
+    height: 0;
+    flex: 1 1 auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 0.6rem;
+
+    & body > div {
+      background-image: none;
+    }
+  }
 }
