@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import userList from "@/lib/users";
+import users from "@/lib/users";
 import styles from "@/styles/pages/login.module.css";
 
 export default function Login() {
@@ -8,18 +8,10 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [windowWidth, setWindowWidth] = useState();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const foundUser = userList.find(({ user }) => user === username);
+    const foundUser = users.find(({ user }) => user === username);
 
     if (foundUser) {
       if (foundUser.pass === password) {
@@ -37,6 +29,14 @@ export default function Login() {
     alert("welcome, guest");
     location.reload();
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className={styles["form-wrapper"]}>
