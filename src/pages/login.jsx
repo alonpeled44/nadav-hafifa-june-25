@@ -6,7 +6,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [windowWidth, setWindowWidth] = useState();
+  const [windowWidth, setWindowWidth] = useState(1400);
 
   const handleSubmit = (e) => {
     e.preventDefault();
