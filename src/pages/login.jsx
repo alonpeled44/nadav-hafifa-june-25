@@ -15,8 +15,10 @@ export default function Login() {
 
     if (foundUser) {
       if (foundUser.pass === password) {
+        const currentUser = { username, password };
         alert("welcome, " + username);
-        location.reload();
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        window.location.href = "/";
       } else {
         setErrorMessage("username and password do not match");
       }
@@ -27,7 +29,7 @@ export default function Login() {
 
   const handleGuestLogin = () => {
     alert("welcome, guest");
-    location.reload();
+    window.location.href = "/";
   };
 
   useEffect(() => {
@@ -51,13 +53,12 @@ export default function Login() {
           </div>
         )}
 
-        <h1 className={styles["login-text"]}>Login</h1>
+        {windowWidth > 1200 && <h1 className={styles["login-text"]}>login</h1>}
 
         <div className={styles.inputs}>
           <input
             type="text"
             name="username"
-            className="username"
             placeholder="username"
             required
             value={username}
@@ -67,7 +68,6 @@ export default function Login() {
           <input
             type="password"
             name="password"
-            className="password"
             placeholder="password"
             required
             value={password}

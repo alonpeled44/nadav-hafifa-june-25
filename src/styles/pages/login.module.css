@@ -25,6 +25,7 @@
 
     & > h1 {
       font-size: 4.5rem;
+      text-transform: capitalize;
     }
 
     & .inputs {
@@ -118,10 +119,6 @@
         & h1 {
           font-size: 5rem;
         }
-      }
-
-      & .login-text {
-        display: none;
       }
 
       & .inputs {
