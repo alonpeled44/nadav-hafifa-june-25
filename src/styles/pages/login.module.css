@@ -1,7 +1,7 @@
 .form-wrapper {
   height: 0px;
-  width: 100%;
   flex: 1 1 auto;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -22,10 +22,6 @@
     border-radius: 24px;
 
     background-color: rgba(255, 255, 255, 0.9);
-
-    & .logo-phone {
-      display: none;
-    }
 
     & > h1 {
       font-size: 4.5rem;
@@ -103,7 +99,6 @@
       height: 100%;
       width: 100%;
 
-      display: flex;
       justify-content: space-evenly;
 
       border-radius: 0;

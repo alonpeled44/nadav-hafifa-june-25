@@ -1,20 +1,26 @@
+import { useState, useEffect } from "react";
+import userList from "@/lib/users";
 import styles from "@/styles/pages/login.module.css";
-import { useState } from "react";
-
-const userList = [
-  { user: "a", pass: "b" },
-  { user: "testUser", pass: "testPass" },
-];
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [windowWidth, setWindowWidth] = useState();
 
-  const foundUser = userList.find(({ user }) => user === username);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const foundUser = userList.find(({ user }) => user === username);
+
     if (foundUser) {
       if (foundUser.pass === password) {
         alert("welcome, " + username);
@@ -35,11 +41,13 @@ export default function Login() {
   return (
     <div className={styles["form-wrapper"]}>
       <form className={styles["login-form"]} onSubmit={handleSubmit}>
-        <div className={styles["logo-phone"]}>
-          <h1>pokédex</h1>
+        {windowWidth <= 1200 && (
+          <div className={styles["logo-phone"]}>
+            <h1>pokédex</h1>
 
-          <img src="/pokeball.png" alt="" />
-        </div>
+            <img src="/pokeball.png" alt="" />
+          </div>
+        )}
 
         <h1 className={styles["login-text"]}>Login</h1>
 

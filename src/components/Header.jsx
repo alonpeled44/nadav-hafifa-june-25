@@ -1,13 +1,8 @@
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
-  const newDate = new Date();
-  const currentDate =
-    newDate.getDate() +
-    "/" +
-    (newDate.getMonth() + 1) +
-    "/" +
-    newDate.getFullYear();
+  const now = new Date();
+  const localDate = now.toLocaleDateString("en-UK"); // UK locale
 
   return (
     <header className={styles.header}>
@@ -16,7 +11,7 @@ export default function Header() {
         <h1>pokémon</h1>
       </div>
 
-      <p className={styles["display-date"]}>{currentDate}</p>
+      <p className={styles["display-date"]}>{localDate}</p>
     </header>
   );
 }
