@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import users from "@/lib/users";
 import styles from "@/styles/pages/login.module.css";
 
@@ -8,21 +9,19 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [windowWidth, setWindowWidth] = useState(0);
 
+  const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const foundUser = users.find(({ user }) => user === username);
+    const foundUser = users.find((user) => user.username === username);
 
     if (!username.match("^[A-Za-z]+$")) {
-      console.log(username + " this not match");
       setErrorMessage("username can only include letters");
     } else if (foundUser) {
-      if (foundUser.pass === password) {
-        localStorage.setItem(
-          "currentUser",
-          JSON.stringify({ username, password })
-        );
-        window.location.href = "/";
+      if (foundUser.password === password) {
+        localStorage.setItem("currentUser", username);
+        router.push("/");
       } else {
         setErrorMessage("username and password do not match");
       }
@@ -32,8 +31,8 @@ export default function Login() {
   };
 
   const handleGuestLogin = () => {
-    window.location.href = "/";
-    localStorage.setItem("currentUser", "!"); //idk if this is what u want
+    router.push("/");
+    localStorage.setItem("currentUser", "!");
   };
 
   useEffect(() => {
