@@ -1,6 +1,6 @@
 const users = [
-  { user: "a", pass: "b" },
-  { user: "testUser", pass: "testPass" },
+  { username: "a", password: "b" },
+  { username: "testUser", password: "testPass" },
 ];
 
 export default users;

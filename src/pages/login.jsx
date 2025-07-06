@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import users from "@/lib/users";
 import styles from "@/styles/pages/login.module.css";
 
@@ -8,15 +9,19 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [windowWidth, setWindowWidth] = useState(0);
 
+  const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const foundUser = users.find(({ user }) => user === username);
+    const foundUser = users.find((user) => user.username === username);
 
-    if (foundUser) {
-      if (foundUser.pass === password) {
-        alert("welcome, " + username);
-        location.reload();
+    if (!username.match("^[A-Za-z]+$")) {
+      setErrorMessage("username can only include letters");
+    } else if (foundUser) {
+      if (foundUser.password === password) {
+        localStorage.setItem("currentUser", username);
+        router.push("/");
       } else {
         setErrorMessage("username and password do not match");
       }
@@ -26,8 +31,8 @@ export default function Login() {
   };
 
   const handleGuestLogin = () => {
-    alert("welcome, guest");
-    location.reload();
+    router.push("/");
+    localStorage.setItem("currentUser", "!");
   };
 
   useEffect(() => {
@@ -51,13 +56,12 @@ export default function Login() {
           </div>
         )}
 
-        <h1 className={styles["login-text"]}>Login</h1>
+        {windowWidth > 1200 && <h1 className={styles["login-text"]}>login</h1>}
 
         <div className={styles.inputs}>
           <input
             type="text"
             name="username"
-            className="username"
             placeholder="username"
             required
             value={username}
@@ -67,7 +71,6 @@ export default function Login() {
           <input
             type="password"
             name="password"
-            className="password"
             placeholder="password"
             required
             value={password}
