@@ -13,7 +13,10 @@ export default function Login() {
 
     const foundUser = users.find(({ user }) => user === username);
 
-    if (foundUser) {
+    if (!username.match("^[A-Za-z]+$")) {
+      console.log(username + " this not match");
+      setErrorMessage("username can only include letters");
+    } else if (foundUser) {
       if (foundUser.pass === password) {
         localStorage.setItem(
           "currentUser",
@@ -29,9 +32,8 @@ export default function Login() {
   };
 
   const handleGuestLogin = () => {
-    alert("welcome, guest");
-    localStorage.setItem;
     window.location.href = "/";
+    localStorage.setItem("currentUser", "!"); //idk if this is what u want
   };
 
   useEffect(() => {
