@@ -9,13 +9,38 @@
 
   background-color: rgba(220, 220, 240, 0.6);
 
-  & .logo {
+  & .header-left-part {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 8px;
 
-    & img {
-      height: 48px;
-      aspect-ratio: 1 / 1;
+    & .logo {
+      display: flex;
+      align-items: center;
+
+      & img {
+        height: 48px;
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    & span {
+      font-size: 2rem;
+    }
+
+    & .username-and-logout {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+
+      & button {
+        padding: 4px;
+
+        font-size: 1.5rem;
+
+        border-radius: 8px;
+      }
     }
   }
 
