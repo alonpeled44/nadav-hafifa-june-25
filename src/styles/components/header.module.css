@@ -32,7 +32,8 @@
     & .username-and-logout {
       display: flex;
       flex-direction: row;
-      gap: 4px;
+      align-items: baseline;
+      gap: 12px;
 
       & button {
         padding: 4px;

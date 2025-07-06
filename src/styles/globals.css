@@ -38,6 +38,7 @@ body > div {
 
     & body > div {
       background-image: none;
+      background-color: rgba(40, 40, 140, 0.1);
     }
   }
 }
