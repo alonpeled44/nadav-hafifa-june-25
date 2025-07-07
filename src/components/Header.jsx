@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
 import styles from "@/styles/components/header.module.css";
+import HorizontalDivider from "./HorizontalDivider";
 
 export default function Header() {
   const [displayName, setDisplayName] = useState("");
@@ -35,7 +36,9 @@ export default function Header() {
         </div>
         {displayName && (
           <>
-            <span> | </span>
+            <div className={styles["horizontal-divider-container"]}>
+              <HorizontalDivider />
+            </div>
 
             <div className={styles["username-and-logout"]}>
               <p>{displayName}</p>

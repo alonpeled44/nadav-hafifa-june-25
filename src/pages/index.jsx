@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Button from "@/components/Button";
 import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
   const [windowWidth, setWindowWidth] = useState(0);
-  const [displayName, setDisplayName] = useState("");
-
-  const router = useRouter();
 
   useEffect(() => {
     const user = localStorage.getItem("currentUser");
@@ -18,7 +15,6 @@ export default function Home() {
     } else {
       setDisplayName(user);
     }
-
     setWindowWidth(window.innerWidth);
 
     const handleResize = () => {
@@ -40,7 +36,7 @@ export default function Home() {
 
           <div className={styles["username-and-logout"]}>
             <p>{displayName}</p>
-            <button className={styles.logout}>sign out</button>
+            <Button text="sign out" />
           </div>
         </div>
       )}
