@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Button from "@/components/Button";
 import users from "@/lib/users";
 import styles from "@/styles/pages/login.module.css";
 
@@ -81,16 +82,18 @@ export default function Login() {
         </div>
 
         <div className={styles.buttons}>
-          <button type="submit" className={styles["user-login"]}>
-            log in
-          </button>
-          <button
+          <Button
+            type="submit"
+            text="log in"
+            className={styles["user-login"]}
+          />
+
+          <Button
             type="button"
+            text="join as guest"
             className={styles["guest-login"]}
             onClick={handleGuestLogin}
-          >
-            join as guest
-          </button>
+          />
         </div>
       </form>
     </div>

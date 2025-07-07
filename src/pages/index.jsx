@@ -18,14 +18,13 @@ export default function Home() {
     } else {
       setDisplayName(user);
     }
-  }, []);
 
-  useEffect(() => {
     setWindowWidth(window.innerWidth);
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -41,7 +40,7 @@ export default function Home() {
 
           <div className={styles["username-and-logout"]}>
             <p>{displayName}</p>
-            <button className={styles.logout}> sign out </button>
+            <button className={styles.logout}>sign out</button>
           </div>
         </div>
       )}

@@ -6,11 +6,11 @@
 
   & .phone-title {
     padding-block: 16px;
+
     & .logo {
       display: flex;
-      flex-direction: row;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       gap: 12px;
 
       padding-block: 24px;
@@ -27,9 +27,8 @@
 
     & .username-and-logout {
       display: flex;
-      flex-direction: row;
-      align-items: baseline;
       justify-content: center;
+      align-items: baseline;
       gap: 16px;
 
       & p {
