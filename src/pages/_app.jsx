@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { displayNameContext } from "@/context/DisplayNameContext";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
+import DisplayNameContextProvider from "@/context/DisplayNameContext";
 
 export default function App({ Component, pageProps }) {
   const [displayName, setDisplayName] = useState("");
@@ -33,11 +33,11 @@ export default function App({ Component, pageProps }) {
   }, [pathname]);
 
   return (
-    <displayNameContext.Provider value={{ displayName, setDisplayName }}>
+    <DisplayNameContextProvider value={{ displayName, setDisplayName }}>
       {windowWidth > 1200 && <Header />}
       <main>
         <Component {...pageProps} />
       </main>
-    </displayNameContext.Provider>
+    </DisplayNameContextProvider>
   );
 }

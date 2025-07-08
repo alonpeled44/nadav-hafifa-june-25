@@ -1,17 +1,14 @@
-import { useContext, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useContext } from "react";
 import { useRouter } from "next/router";
-import { displayNameContext } from "@/context/DisplayNameContext";
+import { DisplayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
-  const { displayName, setDisplayName } = useContext(displayNameContext);
+  const { displayName, setDisplayName } = useContext(DisplayNameContext);
 
   const localDate = new Date().toLocaleDateString("en-UK");
-
-  const pathname = usePathname();
 
   const router = useRouter();
 
