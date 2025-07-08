@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { DisplayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
@@ -34,6 +35,19 @@ export default function Header() {
             <div className={styles["username-and-logout"]}>
               <p>{displayName}</p>
               <Button text="sign out" onClick={handleLogout} />
+            </div>
+
+            <div className={styles["horizontal-divider-container"]}>
+              <HorizontalDivider />
+            </div>
+
+            <div className={styles.links}>
+              <Link className={styles["header-link"]} href="/">
+                pokédex
+              </Link>
+              <Link className={styles["header-link"]} href="/guess-pokemon">
+                guess that pokemon
+              </Link>
             </div>
           </>
         )}
