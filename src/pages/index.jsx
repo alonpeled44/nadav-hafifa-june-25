@@ -1,20 +1,39 @@
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Button from "@/components/Button";
 import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
-  const router = useRouter();
+  const [windowWidth, setWindowWidth] = useState(0);
+
   useEffect(() => {
-    if (!localStorage.getItem("currentUser")) {
-      router.push("/login");
-    }
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div className={styles["home-page-wrapper"]}>
-      Hello Worldasdfasdf
-      <Link href="/login">bruhbruhfb</Link>
+      {windowWidth <= 1200 && (
+        <div className={styles["mobile-title"]}>
+          <div className={styles.logo}>
+            <h1>pokédex</h1>
+            <img src="/pokeball.png" />
+          </div>
+
+          <div className={styles["username-and-logout"]}>
+            <p>{displayName}</p>
+            <Button text="sign out" />
+          </div>
+        </div>
+      )}
+      placeholder just to spite lior
+      <Link href="/login">amoongus</Link>
     </div>
   );
 }

@@ -32,12 +32,19 @@ body > div {
   }
 }
 
+button {
+  cursor: pointer;
+
+  background-color: rgb(255, 255, 255);
+}
+
 @media only screen and (max-width: 1200px) {
   html {
     font-size: 0.6rem;
 
     & body > div {
       background-image: none;
+      background-color: rgba(40, 40, 140, 0.1);
     }
   }
 }
