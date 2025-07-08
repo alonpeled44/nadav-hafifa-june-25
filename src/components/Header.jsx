@@ -1,4 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { displayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
@@ -8,6 +10,16 @@ export default function Header() {
   const { displayName, setDisplayName } = useContext(displayNameContext);
 
   const localDate = new Date().toLocaleDateString("en-UK");
+
+  const pathname = usePathname();
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    router.push("/login");
+    setDisplayName("");
+  };
 
   return (
     <header className={styles.header}>
@@ -24,7 +36,7 @@ export default function Header() {
 
             <div className={styles["username-and-logout"]}>
               <p>{displayName}</p>
-              <Button text="sign out" />
+              <Button text="sign out" onClick={handleLogout} />
             </div>
           </>
         )}
