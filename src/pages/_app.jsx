@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
+import DisplayNameContextProvider from "@/context/DisplayNameContext";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
-import DisplayNameContextProvider from "@/context/DisplayNameContext";
 
 export default function App({ Component, pageProps }) {
   const [displayName, setDisplayName] = useState("");
