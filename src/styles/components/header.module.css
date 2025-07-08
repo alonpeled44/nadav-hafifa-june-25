@@ -10,7 +10,6 @@
   background-color: rgba(220, 220, 240, 0.6);
 
   & .logo-and-user-information {
-    /* change? */
     display: flex;
     align-items: center;
     gap: 8px;

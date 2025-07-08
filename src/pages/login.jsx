@@ -34,7 +34,6 @@ export default function Login() {
   const handleGuestLogin = () => {
     router.push("/");
     localStorage.setItem("currentUser", "!");
-    console.log("hi i iwork");
   };
 
   useEffect(() => {
