@@ -1,13 +1,22 @@
 import { useContext } from "react";
-import { displayNameContext } from "@/context/DisplayNameContext";
+import { useRouter } from "next/router";
+import { DisplayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
-  const { displayName, setDisplayName } = useContext(displayNameContext);
+  const { displayName, setDisplayName } = useContext(DisplayNameContext);
 
   const localDate = new Date().toLocaleDateString("en-UK");
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    router.push("/login");
+    setDisplayName("");
+  };
 
   return (
     <header className={styles.header}>
@@ -24,7 +33,7 @@ export default function Header() {
 
             <div className={styles["username-and-logout"]}>
               <p>{displayName}</p>
-              <Button text="sign out" />
+              <Button text="sign out" onClick={handleLogout} />
             </div>
           </>
         )}

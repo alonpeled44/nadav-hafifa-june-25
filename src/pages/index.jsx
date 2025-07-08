@@ -1,10 +1,13 @@
 import { useState, useEffect, useContext } from "react";
+import { DisplayNameContext } from "@/context/DisplayNameContext";
 import Link from "next/link";
 import Button from "@/components/Button";
 import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
   const [windowWidth, setWindowWidth] = useState(0);
+
+  const { displayName } = useContext(DisplayNameContext);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
