@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles["header-left"]}>
+      <div className={styles["logo-and-user-information"]}>
         {/*change name? */}
         <div className={styles.logo}>
           <img src="/pokeball.png" />
