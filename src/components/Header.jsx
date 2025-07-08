@@ -1,30 +1,14 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { usePathname } from "next/navigation";
+import { useContext } from "react";
+import { displayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
-import styles from "@/styles/components/header.module.css";
 import HorizontalDivider from "./HorizontalDivider";
+import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
-  const [displayName, setDisplayName] = useState("");
-
-  const router = useRouter();
-
-  const pathname = usePathname();
+  const { displayName, setDisplayName } = useContext(displayNameContext);
 
   const now = new Date();
   const localDate = now.toLocaleDateString("en-UK");
-
-  useEffect(() => {
-    const user = localStorage.getItem("currentUser");
-    if (!user) {
-      router.push("/login");
-    } else if (user === "!") {
-      setDisplayName("guest");
-    } else {
-      setDisplayName(user);
-    }
-  }, [pathname]);
 
   return (
     <header className={styles.header}>

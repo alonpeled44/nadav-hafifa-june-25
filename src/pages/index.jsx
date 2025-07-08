@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Button from "@/components/Button";
 import styles from "@/styles/pages/home.module.css";
@@ -6,15 +6,8 @@ import styles from "@/styles/pages/home.module.css";
 export default function Home() {
   const [windowWidth, setWindowWidth] = useState(0);
 
+  const displayName = "amogus";
   useEffect(() => {
-    const user = localStorage.getItem("currentUser");
-    if (!user) {
-      router.push("/login");
-    } else if (user === "!") {
-      setDisplayName("guest");
-    } else {
-      setDisplayName(user);
-    }
     setWindowWidth(window.innerWidth);
 
     const handleResize = () => {
