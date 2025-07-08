@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { displayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
-import HorizontalDivider from "./HorizontalDivider";
+import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
   const { displayName, setDisplayName } = useContext(displayNameContext);
 
-  const now = new Date();
-  const localDate = now.toLocaleDateString("en-UK");
+  const localDate = new Date().toLocaleDateString("en-UK");
 
   return (
     <header className={styles.header}>

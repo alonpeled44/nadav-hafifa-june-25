@@ -6,7 +6,6 @@ import styles from "@/styles/pages/home.module.css";
 export default function Home() {
   const [windowWidth, setWindowWidth] = useState(0);
 
-  const displayName = "amogus";
   useEffect(() => {
     setWindowWidth(window.innerWidth);
 
@@ -21,7 +20,7 @@ export default function Home() {
   return (
     <div className={styles["home-page-wrapper"]}>
       {windowWidth <= 1200 && (
-        <div className={styles["phone-title"]}>
+        <div className={styles["mobile-title"]}>
           <div className={styles.logo}>
             <h1>pokédex</h1>
             <img src="/pokeball.png" />
@@ -33,8 +32,8 @@ export default function Home() {
           </div>
         </div>
       )}
-      Hello Worldasdfasdf
-      <Link href="/login">bruhbruhfb</Link>
+      placeholder just to spite lior
+      <Link href="/login">amoongus</Link>
     </div>
   );
 }
