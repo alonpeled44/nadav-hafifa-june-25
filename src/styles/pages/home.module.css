@@ -9,53 +9,6 @@
 
     padding-bottom: 16px;
 
-    overflow-x: hidden;
-
-    & .overlay {
-      position: fixed;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 36px;
-
-      height: 0;
-      width: 100%;
-
-      background-color: rgb(100, 100, 200);
-
-      overflow-x: hidden;
-
-      z-index: 2;
-
-      transition: height 0.3s ease;
-
-      & .overlay-link {
-        color: rgb(255, 255, 255);
-      }
-    }
-
-    & .overlayOpen {
-      height: 30%;
-
-      transition: height 0.3s ease;
-    }
-
-    & .overlay-button {
-      position: absolute;
-      top: 4px;
-      right: 24px;
-
-      border: none;
-
-      color: rgb(255, 255, 255);
-      background-color: transparent;
-
-      z-index: 3;
-      font-size: 4rem;
-    }
-
     & .logo {
       display: flex;
       justify-content: center;

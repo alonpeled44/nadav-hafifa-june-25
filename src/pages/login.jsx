@@ -49,14 +49,6 @@ export default function Login() {
   return (
     <div className={styles["form-wrapper"]}>
       <form className={styles["login-form"]} onSubmit={handleSubmit}>
-        {windowWidth <= 1200 && (
-          <div className={styles["logo-phone"]}>
-            <h1>pokédex</h1>
-
-            <img src="/pokeball.png" alt="" />
-          </div>
-        )}
-
         {windowWidth > 1200 && <h1 className={styles["login-text"]}>login</h1>}
 
         <div className={styles.inputs}>

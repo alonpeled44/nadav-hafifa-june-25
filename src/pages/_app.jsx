@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <DisplayNameContextProvider value={{ displayName, setDisplayName }}>
-      {windowWidth > 1200 && <Header />}
+      <Header />
       <main>
         <Component {...pageProps} />
       </main>
