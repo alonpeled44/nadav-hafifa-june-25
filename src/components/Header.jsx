@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { DisplayNameContext } from "@/context/DisplayNameContext";
 import Button from "@/components/Button";
@@ -16,6 +17,8 @@ export default function Header() {
 
   const router = useRouter();
 
+  const pathname = usePathname();
+
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     router.push("/login");
@@ -27,10 +30,10 @@ export default function Header() {
   };
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -38,7 +41,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      {windowWidth <= 1200 && (
+      {windowWidth <= 1200 && pathname !== "/login" && (
         <>
           <img
             className={styles["overlay-icon"]}
@@ -88,9 +91,7 @@ export default function Header() {
       </div>
 
       {windowWidth > 1200 && (
-        <>
-          <p className={styles["display-date"]}>{localDate}</p>
-        </>
+        <p className={styles["display-date"]}>{localDate}</p>
       )}
     </header>
   );
