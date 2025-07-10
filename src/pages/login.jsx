@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Button from "@/components/Button";
 import users from "@/lib/users";
 import styles from "@/styles/pages/login.module.css";
 
@@ -48,14 +49,6 @@ export default function Login() {
   return (
     <div className={styles["form-wrapper"]}>
       <form className={styles["login-form"]} onSubmit={handleSubmit}>
-        {windowWidth <= 1200 && (
-          <div className={styles["logo-phone"]}>
-            <h1>pokédex</h1>
-
-            <img src="/pokeball.png" alt="" />
-          </div>
-        )}
-
         {windowWidth > 1200 && <h1 className={styles["login-text"]}>login</h1>}
 
         <div className={styles.inputs}>
@@ -81,16 +74,18 @@ export default function Login() {
         </div>
 
         <div className={styles.buttons}>
-          <button type="submit" className={styles["user-login"]}>
-            log in
-          </button>
-          <button
+          <Button
+            type="submit"
+            text="log in"
+            className={styles["user-login"]}
+          />
+
+          <Button
             type="button"
+            text="join as guest"
             className={styles["guest-login"]}
             onClick={handleGuestLogin}
-          >
-            join as guest
-          </button>
+          />
         </div>
       </form>
     </div>

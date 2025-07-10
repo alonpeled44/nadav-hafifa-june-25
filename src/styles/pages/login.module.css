@@ -74,10 +74,6 @@
         border-radius: 16px;
 
         font-size: 3.5rem;
-
-        cursor: pointer;
-
-        background-color: rgb(255, 255, 255);
       }
 
       & .user-login {
@@ -104,7 +100,7 @@
 
       border-radius: 0;
 
-      background-color: rgba(40, 40, 140, 0.1);
+      background-color: transparent;
 
       & .logo-phone {
         display: flex;
