@@ -5,7 +5,9 @@
   font-size: 3rem;
 
   & .mobile-title {
-    padding-block: 16px;
+    height: 30%;
+
+    padding-bottom: 16px;
 
     & .logo {
       display: flex;
