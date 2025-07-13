@@ -53,11 +53,31 @@
     display: flex;
     justify-content: space-between;
 
+    & .search {
+      width: 20%;
+
+      padding-inline: 12px;
+
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(0, 0, 0);
+      outline: none;
+
+      font-size: 2rem;
+    }
+
     & .filter-and-sort {
       display: flex;
       gap: 12px;
 
       padding: 12px 24px;
+
+      & .sort {
+        padding: 4px;
+
+        border-radius: 12px;
+        font-size: 1.2rem;
+      }
 
       & .p {
         font-size: 1.5rem;
@@ -78,5 +98,15 @@
     overflow: auto;
 
     gap: 24px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .home-page-wrapper {
+    & .card-grid {
+      padding: 8px;
+
+      gap: 12px;
+    }
   }
 }

@@ -10,7 +10,7 @@ export default function Card({ pokemon }) {
       <img className={styles["pokemon-img"]} src="/yellowAmogusBack.png" />
 
       <div className={styles["pokemon-data"]}>
-        <p>type: {pokemon.type}</p>
+        <p>type: {pokemon.type.join(", ")}</p>
         <p>weight: {pokemon.weight}</p>
         <p>height: {pokemon.height}</p>
       </div>

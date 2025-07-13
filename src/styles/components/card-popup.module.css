@@ -1,0 +1,41 @@
+.card-popup-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 36px;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 60%;
+  height: 60%;
+
+  border: 4px solid black;
+  background-color: white;
+
+  & .name-shiny-and-id {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 12px;
+    padding-inline: 48px;
+
+    & .name {
+      font-size: 4rem;
+    }
+
+    & .shiny-and-id {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
+
+& .imgs {
+}
+
+& .pokemon-data {
+  padding-inline: 12px;
+}
