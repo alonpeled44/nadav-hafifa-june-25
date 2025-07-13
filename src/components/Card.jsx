@@ -1,19 +1,18 @@
-import pokemons from "@/lib/pokemons";
 import styles from "@/styles/components/card.module.css";
-export default function Card() {
+export default function Card({ pokemon }) {
   return (
     <div className={styles["card-wrapper"]}>
       <div className={styles["name-and-number"]}>
-        <p>nigg</p>
-        <span>{pokemons.length}</span>
+        <p>{pokemon.name}</p>
+        <span>{pokemon.id}</span>
       </div>
 
       <img className={styles["pokemon-img"]} src="/yellowAmogusBack.png" />
 
       <div className={styles["pokemon-data"]}>
-        <p>type: {pokemons[0].type}</p>
-        <p>weight: {pokemons[0].weight}</p>
-        <p>height: {pokemons[0].height}</p>
+        <p>type: {pokemon.type}</p>
+        <p>weight: {pokemon.weight}</p>
+        <p>height: {pokemon.height}</p>
       </div>
     </div>
   );
