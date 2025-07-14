@@ -29,8 +29,8 @@ export default function Home() {
           />
         )}
         <div className={styles["filter-and-sort"]}>
-          <p className={styles.p}>stupid filter will be here</p>
-
+          <p className={styles.p}>stupid filter will be here</p>{" "}
+          {/*button with onClick to set up conditional rendering for a div of checkamark inputs :)))))*/}
           <select className={styles.sort} name="sort">
             <option value="">sort by</option>
             <option value="byId">id</option>
