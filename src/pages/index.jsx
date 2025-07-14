@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import pokemons from "@/lib/pokemons";
+import { WindowWidthContext } from "@/context/WindowWidthContext";
 import Card from "@/components/Card";
 import CardPopup from "@/components/CardPopup";
 import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
   const [currentPokemon, setCurrentPokemon] = useState({});
+
+  const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
   const handleClickOutside = () => {
     setCurrentPokemon({});
@@ -18,11 +21,13 @@ export default function Home() {
   return (
     <div className={styles["home-page-wrapper"]}>
       <div className={styles["search-and-filters"]}>
-        <input
-          className={styles.search}
-          type="search"
-          placeholder="🔎 search..."
-        />
+        {windowWidth > 1200 && (
+          <input
+            className={styles.search}
+            type="search"
+            placeholder="🔎 search..."
+          />
+        )}
         <div className={styles["filter-and-sort"]}>
           <p className={styles.p}>stupid filter will be here</p>
 
@@ -47,10 +52,12 @@ export default function Home() {
 
         {!(Object.keys(currentPokemon).length === 0) && (
           <>
-            <span
-              onClick={handleClickOutside}
-              className={styles["darken-background-on-popup"]}
-            />
+            {windowWidth > 1200 && (
+              <span
+                onClick={handleClickOutside}
+                className={styles["darken-background-on-popup"]}
+              />
+            )}
             <CardPopup pokemon={currentPokemon} handleClose={handleClose} />
           </>
         )}

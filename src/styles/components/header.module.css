@@ -34,12 +34,6 @@
     }
   }
 
-  & .overlayOpen {
-    height: 30%;
-
-    transition: height 0.3s ease;
-  }
-
   & .overlay-icon {
     position: absolute;
     top: 8px;
@@ -147,6 +141,7 @@
 
     & .overlay {
       position: fixed;
+      top: 0;
 
       height: 0;
       width: 100%;
@@ -170,7 +165,7 @@
       }
     }
 
-    & .overlayOpen {
+    & .overlay-open {
       height: 30%;
 
       transition: height 0.3s ease;
