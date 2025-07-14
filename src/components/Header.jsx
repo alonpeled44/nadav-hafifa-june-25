@@ -8,8 +8,8 @@ import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
-  const [windowWidth, setWindowWidth] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const { displayName, setDisplayName } = useContext(DisplayNameContext);
 

@@ -1,7 +1,8 @@
 import styles from "@/styles/components/card.module.css";
-export default function Card({ pokemon }) {
+
+export default function Card({ pokemon, onClick }) {
   return (
-    <div className={styles["card-wrapper"]}>
+    <div className={styles["card-wrapper"]} onClick={onClick}>
       <div className={styles["name-and-number"]}>
         <p>{pokemon.name}</p>
         <span>{pokemon.id}</span>

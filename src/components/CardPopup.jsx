@@ -1,19 +1,25 @@
 import styles from "@/styles/components/card-popup.module.css";
 
-export default function CardPopup() {
+export default function CardPopup({ pokemon, handleClose }) {
   return (
     <div className={styles["card-popup-wrapper"]}>
-      <div className={styles["name-shiny-and-id"]}>
-        <h1 className={styles.name}>name lol</h1>
+      <div className={styles["name-shiny-id-and-close"]}>
+        <h1 className={styles.name}>{pokemon.name}</h1>
 
-        <div className={styles["shiny-and-id"]}>
+        <div className={styles["shiny-id-and-close"]}>
           <label>
             <input type="checkbox" name="isShiny" />{" "}
             {/*probably wanna make the checkbox larger and less aids*/}
             Shiny
           </label>
 
-          <span className={styles.id}>#69</span>
+          <span className={styles.id}>#{pokemon.id}</span>
+
+          <img
+            className={styles.close}
+            onClick={handleClose}
+            src="/x-icon.png"
+          />
         </div>
       </div>
 
@@ -23,9 +29,12 @@ export default function CardPopup() {
       </div>
 
       <div className={styles["pokemon-data"]}>
-        <p>type: type lol</p>
-        <p>weight: weight lol</p>
-        <p>height: height lol</p>
+        <p>
+          type:{" "}
+          {Array.isArray(pokemon.type) ? pokemon.type.join(", ") : "unknown"}
+        </p>
+        <p>weight: {pokemon.weight}</p>
+        <p>height: {pokemon.height}</p>
       </div>
     </div>
   );

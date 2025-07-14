@@ -1,12 +1,22 @@
+import { useState } from "react";
 import pokemons from "@/lib/pokemons";
 import Card from "@/components/Card";
 import CardPopup from "@/components/CardPopup";
 import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
+  const [currentPokemon, setCurrentPokemon] = useState({});
+
+  const handleClickOutside = () => {
+    setCurrentPokemon({});
+  };
+
+  const handleClose = () => {
+    setCurrentPokemon({});
+  };
+
   return (
     <div className={styles["home-page-wrapper"]}>
-      <CardPopup />
       <div className={styles["search-and-filters"]}>
         <input
           className={styles.search}
@@ -28,8 +38,22 @@ export default function Home() {
 
       <div className={styles["card-grid"]}>
         {pokemons.map((pokemon, index) => (
-          <Card key={index} pokemon={pokemon} />
+          <Card
+            key={index}
+            pokemon={pokemon}
+            onClick={() => setCurrentPokemon(pokemon)}
+          />
         ))}
+
+        {!(Object.keys(currentPokemon).length === 0) && (
+          <>
+            <span
+              onClick={handleClickOutside}
+              className={styles["darken-background-on-popup"]}
+            />
+            <CardPopup pokemon={currentPokemon} handleClose={handleClose} />
+          </>
+        )}
       </div>
     </div>
   );
