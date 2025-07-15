@@ -1,6 +1,9 @@
 import { useState, useContext } from "react";
 import pokemons from "@/lib/pokemons";
+import types from "@/lib/types";
+import sortOptions from "@/lib/sortOptions";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
+import Dropdown from "@/components/Dropdown";
 import Card from "@/components/Card";
 import CardPopup from "@/components/CardPopup";
 import styles from "@/styles/pages/home.module.css";
@@ -9,10 +12,6 @@ export default function Home() {
   const [currentPokemon, setCurrentPokemon] = useState({});
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
-
-  const handleClickOutside = () => {
-    setCurrentPokemon({});
-  };
 
   const handleClose = () => {
     setCurrentPokemon({});
@@ -29,15 +28,12 @@ export default function Home() {
           />
         )}
         <div className={styles["filter-and-sort"]}>
-          <p className={styles.p}>stupid filter will be here</p>{" "}
-          {/*button with onClick to set up conditional rendering for a div of checkamark inputs :)))))*/}
-          <select className={styles.sort} name="sort">
-            <option value="">sort by</option>
-            <option value="byId">id</option>
-            <option value="byAlphabet">alphabetically</option>
-            <option value="byWeight">weight</option>
-            <option value="byHeight">height</option>
-          </select>
+          <Dropdown
+            placeholder="filter"
+            arr={types}
+            option={<input type="checkbox" />}
+          />
+          <Dropdown placeholder="sort by" arr={sortOptions} />
         </div>
       </div>
 
@@ -54,7 +50,7 @@ export default function Home() {
           <>
             {windowWidth > 1200 && (
               <span
-                onClick={handleClickOutside}
+                onClick={handleClose}
                 className={styles["darken-background-on-popup"]}
               />
             )}

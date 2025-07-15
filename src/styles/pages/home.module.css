@@ -71,25 +71,10 @@
 
     & .filter-and-sort {
       display: flex;
-      gap: 12px;
+      gap: 48px;
 
-      padding: 12px 24px;
-
-      & .sort {
-        width: 50%;
-        padding: 4px;
-
-        border-radius: 12px;
-        font-size: 1.2rem;
-
-        & option {
-          font-size: 1.5rem;
-        }
-      }
-
-      & .p {
-        font-size: 1.5rem;
-      }
+      padding-block: 24px;
+      padding-right: 60px;
     }
   }
 

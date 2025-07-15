@@ -14,7 +14,7 @@ export default function Card({ pokemon, onClick }) {
         </div>
       )}
 
-      <img className={styles["pokemon-img"]} src="/yellowAmogusBack.png" />
+      <img className={styles["pokemon-img"]} src="/amogusTwerk.gif" />
 
       {windowWidth > 1200 && (
         <div className={styles["pokemon-data"]}>
