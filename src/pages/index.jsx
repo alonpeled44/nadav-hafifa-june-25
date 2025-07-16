@@ -15,14 +15,27 @@ export default function Home() {
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
-  const handleFilterSelect = () => {
-    console.log("filter moment");
-  };
   const handleSortSelect = () => {
     console.log("sort moment");
   };
   const handleClose = () => {
     setCurrentPokemon({});
+  };
+  const showbruh = () => {
+    console.log(filterSelected);
+  };
+
+  const handleCheckbox = (event) => {
+    const isChecked = event.target.checked;
+    const value = event.target.value;
+    console.log("Checked:", isChecked);
+    if (isChecked) {
+      setFilterSelected([...filterSelected, value]);
+
+      console.log(filterSelected);
+    } else {
+      setFilterSelected((prev) => prev.filter((item) => item !== value));
+    }
   };
 
   return (
@@ -36,15 +49,20 @@ export default function Home() {
           />
         )}
         <div className={styles["filter-and-sort"]}>
+          <button onClick={showbruh}>show bruh</button>
           <Dropdown
             placeholder="filter"
-            arr={types}
-            option={<input type="checkbox" onChange={handleFilterSelect} />}
+            options={types}
+            selectedOptions={filterSelected}
+            isCheckbox={true}
+            onChange={handleCheckbox}
           />
           <Dropdown
             placeholder="sort by"
-            arr={sortOptions}
+            options={sortOptions}
+            selectedOptions={filterSelected}
             handleSelect={handleSortSelect}
+            isCheckbox={false}
           />
         </div>
       </div>

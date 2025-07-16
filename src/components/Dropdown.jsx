@@ -1,13 +1,21 @@
 import { useState } from "react";
 import styles from "@/styles/components/dropdown.module.css";
 
-export default function Dropdown({ placeholder, arr, option, handleSelect }) {
+export default function Dropdown({
+  placeholder,
+  options,
+  handleSelect,
+  selectedOptions,
+  isCheckbox,
+  onChange,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const onClick = () => {
     setIsOpen(!isOpen);
   };
 
+  console.log(options.find((optiopn) => optiopn === "impostor"));
   return (
     <div className={styles["dropdown-wrapper"]}>
       <button className={styles.dropdown} onClick={onClick}>
@@ -20,10 +28,18 @@ export default function Dropdown({ placeholder, arr, option, handleSelect }) {
             isOpen ? styles["dropdown-open"] : ""
           }`}
         >
-          {arr.map((i) => (
+          {options.map((option) => (
             <label className={styles.option} onClick={handleSelect}>
+              {isCheckbox && (
+                <input
+                  type="checkbox"
+                  value={option}
+                  onChange={onChange}
+                  checked={selectedOptions.includes(option)}
+                />
+              )}
+              {/* instead of this use isCheckbox and pass true/false when creating dropdown in homepage like chatgpt said*/}
               {option}
-              {i}
             </label>
           ))}
         </div>
