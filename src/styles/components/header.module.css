@@ -154,8 +154,6 @@
 
       background-color: rgb(100, 100, 200);
 
-      z-index: 2;
-
       transition: height 0.3s ease;
 
       & .overlay-link {

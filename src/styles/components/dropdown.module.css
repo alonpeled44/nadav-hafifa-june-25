@@ -13,7 +13,7 @@
     border: 1px solid rgb(0, 0, 0);
     border-radius: 12px;
 
-    z-index: 2;
+    z-index: 1;
   }
 
   & .dropdown-options {
@@ -29,9 +29,7 @@
     flex-direction: column;
     gap: 12px;
 
-    overflow: hidden;
-
-    padding-inline: 12px;
+    padding: 12px;
 
     background-color: rgb(255, 255, 255);
 
@@ -41,17 +39,25 @@
     border-top-right-radius: 0;
     border-top-left-radius: 0;
 
-    z-index: 1;
+    z-index: 0;
 
     transition: height 0.3s ease;
 
     & .option {
       font-size: 1.2rem;
+
+      cursor: pointer;
     }
   }
 
   & .dropdown-open {
     height: 180px;
     width: 140px;
+
+    padding-top: 36px;
+
+    overflow-y: scroll;
+
+    transition: height 0.3s ease;
   }
 }

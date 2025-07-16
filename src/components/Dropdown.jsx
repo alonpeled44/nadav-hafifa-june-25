@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styles from "@/styles/components/dropdown.module.css";
 
-export default function Dropdown({ placeholder, arr, option }) {
-  const [filterOpen, setFilterOpen] = useState(false);
+export default function Dropdown({ placeholder, arr, option, handleSelect }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const onClick = () => {
-    setFilterOpen(!filterOpen);
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -14,18 +14,20 @@ export default function Dropdown({ placeholder, arr, option }) {
         {placeholder}
       </button>
 
-      <div
-        className={`${styles["dropdown-options"]} ${
-          filterOpen ? styles["dropdown-open"] : ""
-        }`}
-      >
-        {arr.map((i) => (
-          <label className={styles.option}>
-            {option}
-            {i}
-          </label>
-        ))}
-      </div>
+      {isOpen && (
+        <div
+          className={`${styles["dropdown-options"]} ${
+            isOpen ? styles["dropdown-open"] : ""
+          }`}
+        >
+          {arr.map((i) => (
+            <label className={styles.option} onClick={handleSelect}>
+              {option}
+              {i}
+            </label>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

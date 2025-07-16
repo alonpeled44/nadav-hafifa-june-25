@@ -10,9 +10,17 @@ import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
   const [currentPokemon, setCurrentPokemon] = useState({});
+  const [filterSelected, setFilterSelected] = useState([]);
+  const [sortSelected, setSortSelected] = useState("");
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
+  const handleFilterSelect = () => {
+    console.log("filter moment");
+  };
+  const handleSortSelect = () => {
+    console.log("sort moment");
+  };
   const handleClose = () => {
     setCurrentPokemon({});
   };
@@ -31,9 +39,13 @@ export default function Home() {
           <Dropdown
             placeholder="filter"
             arr={types}
-            option={<input type="checkbox" />}
+            option={<input type="checkbox" onChange={handleFilterSelect} />}
           />
-          <Dropdown placeholder="sort by" arr={sortOptions} />
+          <Dropdown
+            placeholder="sort by"
+            arr={sortOptions}
+            handleSelect={handleSortSelect}
+          />
         </div>
       </div>
 
@@ -54,7 +66,11 @@ export default function Home() {
                 className={styles["darken-background-on-popup"]}
               />
             )}
-            <CardPopup pokemon={currentPokemon} handleClose={handleClose} />
+            <CardPopup
+              className={styles.popup}
+              pokemon={currentPokemon}
+              handleClose={handleClose}
+            />
           </>
         )}
       </div>
