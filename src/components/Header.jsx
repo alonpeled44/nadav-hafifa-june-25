@@ -9,7 +9,9 @@ import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
   const [windowWidth, setWindowWidth] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [overlayOpen, setOverlayOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
 
   const { displayName, setDisplayName } = useContext(DisplayNameContext);
 
@@ -26,8 +28,13 @@ export default function Header() {
   };
 
   const handleOverlay = () => {
-    setIsOpen(!isOpen);
+    setOverlayOpen(!overlayOpen);
   };
+
+  const handleSettings = () => {
+    setSettingsOpen(!settingsOpen);
+    console.log(settingsOpen);
+    }
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,11 +53,11 @@ export default function Header() {
           <img
             className={styles["overlay-icon"]}
             onClick={handleOverlay}
-            src={isOpen ? "/x-icon.png" : "/3-lines-icon.png"}
+            src={overlayOpen ? "/x-icon.png" : "/3-lines-icon.png"}
           />
 
           <nav
-            className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ""}`}
+            className={`${styles.overlay} ${overlayOpen ? styles.overlayOpen : ""}`}
           >
             <Link className={styles["overlay-link"]} href="/">
               pokédex
@@ -90,9 +97,12 @@ export default function Header() {
         )}
       </div>
 
-      {windowWidth > 1200 && (
-        <p className={styles["display-date"]}>{localDate}</p>
-      )}
+      <div className={styles["date-and-settings"]}>
+        {windowWidth > 1200 && (
+          <p className={styles.date}>{localDate}</p>
+        )}
+        <img onClick={handleSettings} src="/settings-icon.png"/>
+      </div>
     </header>
   );
 }
