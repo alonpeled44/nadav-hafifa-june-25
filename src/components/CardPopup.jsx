@@ -41,9 +41,7 @@ export default function CardPopup({ pokemon, handleClose }) {
           {windowWidth > 1200 && (
             <div className={styles["shiny-and-id"]}>
               <label>
-                <input type="checkbox" name="isShiny" />{" "}
-                {/*probably wanna make the checkbox larger and less aids*/}
-                Shiny
+                <input type="checkbox" name="isShiny" /> Shiny
               </label>
 
               <span className={styles.id}>#{pokemon.id}</span>

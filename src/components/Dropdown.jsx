@@ -15,7 +15,6 @@ export default function Dropdown({
     setIsOpen(!isOpen);
   };
 
-  console.log(options.find((optiopn) => optiopn === "impostor"));
   return (
     <div className={styles["dropdown-wrapper"]}>
       <button className={styles.dropdown} onClick={onClick}>
@@ -29,7 +28,13 @@ export default function Dropdown({
           }`}
         >
           {options.map((option) => (
-            <label className={styles.option} onClick={handleSelect}>
+            <label
+              className={`${styles.option} ${
+                !isCheckbox ? styles["select-option"] : ""
+              }`}
+              key={option}
+              onClick={!isCheckbox ? () => handleSelect(option) : undefined}
+            >
               {isCheckbox && (
                 <input
                   type="checkbox"
@@ -38,7 +43,6 @@ export default function Dropdown({
                   checked={selectedOptions.includes(option)}
                 />
               )}
-              {/* instead of this use isCheckbox and pass true/false when creating dropdown in homepage like chatgpt said*/}
               {option}
             </label>
           ))}
@@ -47,9 +51,3 @@ export default function Dropdown({
     </div>
   );
 }
-
-//this doesnt fucking work :DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-/*instead of having conditional rendering to only appear ifOpen
-  have it apply a style to just set width and height to 0??? prolly wont work but idfk what else to do*/
-/* ok instead of jus having basic checkboxes have a usestate array for filter (push/pop when a box is checked)
-   and normal usestate for sort by (onClick for every option) fmlllllllllllllllll*/
