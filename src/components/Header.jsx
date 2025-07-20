@@ -3,11 +3,17 @@ import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { DisplayNameContext } from "@/context/DisplayNameContext";
+import Dropdown from "./Dropdown";
+import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
+
 export default function Header() {
+  const options = ['a', 'b', 'c', 'd', 'e'];
+  const onChange = () => {}
+
   const [windowWidth, setWindowWidth] = useState(0);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -35,6 +41,8 @@ export default function Header() {
     setSettingsOpen(!settingsOpen);
     console.log(settingsOpen);
     }
+
+    
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,12 +105,81 @@ export default function Header() {
         )}
       </div>
 
-      <div className={styles["date-and-settings"]}>
-        {windowWidth > 1200 && (
+      {windowWidth > 1200 && (<div className={styles["date-and-settings"]}>
+       
           <p className={styles.date}>{localDate}</p>
-        )}
+        
         <img onClick={handleSettings} src="/settings-icon.png"/>
-      </div>
+      </div>)}
+
+      {windowWidth >  1200 && <Modal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)}>
+        <div className={styles["settings-modal"]}>
+          <div className={styles.setting}>
+            <h1>Theme</h1>
+            <div className={styles["setting-options"]}>
+            <label>
+              <input type="radio" name="theme" value="light" />
+              <div className={styles["image-wrapper"]}>
+                <img src="/sun-icon.png" />
+              </div>
+              light
+            </label>
+
+            <label>
+              <input type="radio" name="theme" value="dark" />
+              <div className={styles["image-wrapper"]}>
+              <img src="/moon-icon.png" />
+              </div>
+              
+              dark
+            </label>
+          </div>
+
+            </div>
+            
+
+          <div className={styles.setting}>
+            <h1>Font size</h1>
+
+            <div className={styles["setting-options"]}>
+            <label>
+              <input type="radio" name="fontSize" value="large" />
+              <div className={styles["image-wrapper"]}>
+                <img className={styles["font-size-large"]} src="/font-size-icon.png" />
+              </div>
+              large
+            </label>
+
+            <label>
+              <input type="radio" name="fontSize" value="medium" />
+
+              <div className={styles["image-wrapper"]}>
+                <img className={styles["font-size-medium"]} src="/font-size-icon.png" />
+              </div>
+              
+              medium
+            </label>
+
+            <label>
+              <input type="radio" name="fontSize" value="small" />
+              <div className={styles["image-wrapper"]}>
+                <img className={styles["font-size-small"]} src="/font-size-icon.png" />
+              </div>
+              small
+            </label>
+
+            </div>
+          
+          </div>
+        </div>
+        
+      </Modal>}
+
+      <Dropdown>
+        <img src="/sun-icon.png"/>
+
+        dropdown
+      </Dropdown>
     </header>
   );
 }

@@ -115,7 +115,77 @@
       cursor: pointer;
     }
   }
-}
+
+  & .settings-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+
+    & .setting {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 16px;
+
+      & .setting-options {
+
+        display: flex;
+        justify-content: flex-start;
+        
+        gap: 16px;
+
+        & label {
+          display: flex;
+          flex-direction: column;
+
+          gap: 4px;
+
+          & .image-wrapper {
+            height: 64px;
+            aspect-ratio: 1 / 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid black;
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            & .font-size-large {
+              height: 64px;
+              aspect-ratio: 1 / 1;
+            }
+
+            & .font-size-medium {
+              height: 48px;
+              aspect-ratio: 1 / 1;
+
+            }
+
+            & .font-size-small {
+              height: 36px;
+              aspect-ratio: 1 / 1;
+
+            }
+
+            & img {
+              height: 64px;
+            }
+          }
+
+
+          & input {
+            display: none;
+          }
+        }
+      }
+    }
+
+  }
+} /* fix this shit*/
 
 @media only screen and (max-width: 1200px) {
   .header {
@@ -155,6 +225,17 @@
           text-decoration: none;
         }
       }
+    }
+
+    & .date-and-settings {
+      position: absolute;
+      top: 2%;
+      left: 2%;
+
+      padding: 2px;
+
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 50%;
     }
 
     & .overlay {
