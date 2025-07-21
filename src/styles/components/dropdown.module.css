@@ -1,12 +1,12 @@
 .dropdown-wrapper {
   position: relative;
-  
+
   height: 32px;
   width: 120px;
-  
+
   & .dropdown {
-      position: relative;
-      z-index: 1;
+    position: relative;
+    z-index: 1;
 
     height: 100%;
     width: 140px;
@@ -14,7 +14,6 @@
 
     border: 1px solid rgb(0, 0, 0);
     border-radius: 12px;
-
   }
 
   & .dropdown-options {
@@ -38,7 +37,6 @@
     border: 1px solid rgb(0, 0, 0);
     border-top: none;
     border-radius: 12px;
-
 
     transition: height 0.3s ease;
 
