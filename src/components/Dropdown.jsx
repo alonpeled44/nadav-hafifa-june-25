@@ -8,8 +8,8 @@ export default function Dropdown({
   selectedOptions,
   isCheckbox,
   onChange,
+  style,
   children,
-  style
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
