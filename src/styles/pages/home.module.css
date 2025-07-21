@@ -96,13 +96,13 @@
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 2;
 
       height: 100%;
       width: 100%;
       background-color: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(4px);
 
-      z-index: 2;
     }
   }
 }
@@ -113,11 +113,6 @@
       padding: 8px;
 
       gap: 12px;
-    }
-
-    & .search-and-filters {
-      & .filter-and-sort {
-      }
     }
   }
 }

@@ -49,7 +49,7 @@ export default function CardPopup({ pokemon, handleClose }) {
           )}
 
           <img
-            className={styles.close}
+            className={styles["close-button"]}
             onClick={handleAnimatedClose}
             src="/x-icon.png"
           />
@@ -65,8 +65,8 @@ export default function CardPopup({ pokemon, handleClose }) {
         <div className={styles["pokemon-data"]}>
           {windowWidth <= 1200 && <p>{pokemon.name}</p>}
           <p>
-            type:{" "}
-            {Array.isArray(pokemon.type) ? pokemon.type.join(", ") : "unknown"}
+            type:
+            {pokemon.type.join(", ")}
           </p>
           <p>weight: {pokemon.weight}</p>
           <p>height: {pokemon.height}</p>

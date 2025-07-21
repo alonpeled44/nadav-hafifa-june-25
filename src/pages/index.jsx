@@ -28,7 +28,7 @@ export default function Home() {
     if (isChecked) {
       setFilterSelected([...filterSelected, value]);
     } else {
-      setFilterSelected((prev) => prev.filter((item) => item !== value));
+      setFilterSelected(filterSelected.filter((item) => item !== value));
     }
   };
 
@@ -55,7 +55,6 @@ export default function Home() {
             options={sortOptions}
             selectedOptions={filterSelected}
             handleSelect={handleSortSelect}
-            isCheckbox={false}
           />
         </div>
       </div>

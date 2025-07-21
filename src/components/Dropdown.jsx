@@ -6,7 +6,7 @@ export default function Dropdown({
   options,
   handleSelect,
   selectedOptions,
-  isCheckbox,
+  isCheckbox = false,
   onChange,
 }) {
   const [isOpen, setIsOpen] = useState(false);

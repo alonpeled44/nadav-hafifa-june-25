@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import users from "@/lib/users";
-import styles from "@/styles/pages/login.module.css";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
+import styles from "@/styles/pages/login.module.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
