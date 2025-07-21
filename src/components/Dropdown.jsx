@@ -8,7 +8,8 @@ export default function Dropdown({
   selectedOptions,
   isCheckbox,
   onChange,
-  children
+  children,
+  style
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +18,7 @@ export default function Dropdown({
   };
 
   return (
-    <div className={styles["dropdown-wrapper"]}>
+    <div style={style} className={styles["dropdown-wrapper"]}>
       <button className={styles.dropdown} onClick={onClick}>
         {placeholder}
       </button>

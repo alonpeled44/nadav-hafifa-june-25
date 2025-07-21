@@ -123,39 +123,47 @@
     padding: 16px;
 
     & .setting {
-      display: flex;
-      justify-content: space-between;
+      height: 100px;
 
-      gap: 16px;
+      display: flex;
+      justify-content: space-around;
+
 
       & .setting-options {
+        width: 220px;
 
         display: flex;
         justify-content: flex-start;
         
         gap: 16px;
 
+        & .selected {
+          & .image-wrapper {
+            border: 4px solid rgb(0, 0, 0);
+          }
+        }
+
         & label {
           display: flex;
           flex-direction: column;
-
+          align-items: center;
           gap: 4px;
 
           & .image-wrapper {
             height: 64px;
-            aspect-ratio: 1 / 1;
+            width: 64px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border: 2px solid black;
+            border: 2px solid rgb(0, 0, 0);
             border-radius: 8px;
 
             cursor: pointer;
 
             & .font-size-large {
-              height: 64px;
+              height: 56px;
               aspect-ratio: 1 / 1;
             }
 
@@ -168,7 +176,6 @@
             & .font-size-small {
               height: 36px;
               aspect-ratio: 1 / 1;
-
             }
 
             & img {
@@ -183,9 +190,45 @@
         }
       }
     }
-
   }
-} /* fix this shit*/
+
+} 
+
+.mobile-setting-options {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  & label {
+
+    & input {
+      display: none;
+    }
+
+    & .image-wrapper {
+      height: 48px;
+      width: 48px;
+
+      display: flex;
+      align-items: center;
+  
+
+      & .font-size-large {
+        height: 36px;
+        width: 36px;
+      }
+
+      & .font-size-small {
+        height: 24px;
+        width: 24px;
+
+      }
+    }
+  }
+}
+
 
 @media only screen and (max-width: 1200px) {
   .header {
@@ -304,5 +347,29 @@
         font-size: 2.5rem;
       }
     }
+  }
+
+  & .mobile-theme-toggle {
+    height: 48px;
+    width: 48px;
+
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50%;
+  }
+
+  & .dropdown-settings-icon {
+    height: 48px;
+    width: 48px;
+  }
+
+  & .font-size-large {
+    height: 36px;
+    width: 36px;
+  }
+
+  & .font-size-small {
+    height: 24px;
+    width: 24px;
+
   }
 }

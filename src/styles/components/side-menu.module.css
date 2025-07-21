@@ -1,0 +1,73 @@
+.side-menu-wrapper {
+    position: relative;
+  
+    height: 48px;
+    width: 48px;
+
+    
+  
+    & .side-menu {
+      position: relative;
+      height: 48px;
+      width: 48px;
+        font-size: 1.5rem;
+
+        z-index: 1;
+  
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 50%;
+
+      
+  
+    }
+  
+    & .side-menu-options {
+        position: absolute;
+        top: 0%;
+        right: 0px;
+        left: 0px;
+        z-index: 0;
+  
+      height: 48px;
+      width: 120px;
+  
+      display: flex;
+      align-items: center;
+      gap: 16px;
+  
+      padding: 4px;
+  
+
+      overflow-x: visible;
+
+
+      background-color: rgb(255, 255, 255);
+  
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 24px;
+  
+  
+      transition: height 0.3s ease;
+  
+      & .option {
+        font-size: 1.2rem;
+  
+        cursor: pointer;
+      }
+  
+      & .select-option:hover {
+        background-color: rgb(20, 20, 255);
+        color: rgb(255, 255, 255);
+      }
+    }
+  
+    & .side-menu-open {
+      height: 48px;
+      width: fit-content;
+  
+      padding-left: 64px;
+  
+  
+      transition: height 0.3s ease;
+    }
+  }
