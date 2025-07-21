@@ -23,7 +23,7 @@ export default function CardPopup({ pokemon, handleClose }) {
       setIsOpen(!isOpen);
     };
 
-    if (!(Object.keys(pokemon).length === 0)) {
+    if (Object.keys(pokemon).length !== 0) {
       handleTransition();
     }
   }, []);

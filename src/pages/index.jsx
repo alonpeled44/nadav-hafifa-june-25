@@ -68,7 +68,7 @@ export default function Home() {
           />
         ))}
 
-        {!(Object.keys(currentPokemon).length === 0) && (
+        {Object.keys(currentPokemon).length !== 0 && (
           <>
             {windowWidth > 1200 && (
               <span
