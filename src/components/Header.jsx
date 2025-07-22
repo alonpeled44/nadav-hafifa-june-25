@@ -139,7 +139,7 @@ export default function Header() {
                     name="theme"
                     value="light"
                     onChange={toggleTheme}
-                    checked={selectedFontSize === "light"}
+                    checked={selectedTheme === "light"}
                   />
                   <div className={styles["image-wrapper"]}>
                     <img src="/sun-icon.png" />
@@ -155,7 +155,7 @@ export default function Header() {
                     name="theme"
                     value="dark"
                     onChange={toggleTheme}
-                    checked={selectedFontSize === "dark"}
+                    checked={selectedTheme === "dark"}
                   />
                   <div className={styles["image-wrapper"]}>
                     <img src="/moon-icon.png" />
@@ -264,7 +264,7 @@ export default function Header() {
                       ? styles["font-size-large"]
                       : styles["font-size-small"]
                   }
-                />
+                /> // bruh - array usestate of what isnt selected? and just have a map of whats not selected? or filter? or both? cancer :)
               }
             >
               <div className={styles["mobile-setting-options"]}>

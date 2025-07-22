@@ -6,7 +6,10 @@ export default function SideMenu({ placeholder, style, children }) {
 
   return (
     <div style={style} className={styles["side-menu-wrapper"]}>
-      <button className={styles["side-menu"]} onClick={setIsOpen(!isOpen)}>
+      <button
+        className={styles["side-menu"]}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         {placeholder}
       </button>
 

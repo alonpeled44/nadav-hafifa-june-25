@@ -13,13 +13,9 @@ export default function Dropdown({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const onClick = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div style={style} className={styles["dropdown-wrapper"]}>
-      <button className={styles.dropdown} onClick={onClick}>
+      <button className={styles.dropdown} onClick={() => setIsOpen(!isOpen)}>
         {placeholder}
       </button>
 
