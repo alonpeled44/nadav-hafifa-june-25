@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import DisplayNameContextProvider from "@/context/DisplayNameContext";
+import WindowWidthContextProvider from "@/context/WindowWidthContext";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   const [displayName, setDisplayName] = useState("");
-  const [windowWidth, setWindowWidth] = useState();
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const pathname = usePathname();
 
@@ -33,11 +34,13 @@ export default function App({ Component, pageProps }) {
   }, [pathname]);
 
   return (
-    <DisplayNameContextProvider value={{ displayName, setDisplayName }}>
-      <Header />
-      <main>
-        <Component {...pageProps} />
-      </main>
-    </DisplayNameContextProvider>
+    <WindowWidthContextProvider value={{ windowWidth, setWindowWidth }}>
+      <DisplayNameContextProvider value={{ displayName, setDisplayName }}>
+        <Header />
+        <main>
+          <Component {...pageProps} />
+        </main>
+      </DisplayNameContextProvider>
+    </WindowWidthContextProvider>
   );
 }

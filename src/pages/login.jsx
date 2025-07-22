@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import users from "@/lib/users";
+import { WindowWidthContext } from "@/context/WindowWidthContext";
 import styles from "@/styles/pages/login.module.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [windowWidth, setWindowWidth] = useState(0);
+
+  const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
   const router = useRouter();
 
@@ -35,16 +37,6 @@ export default function Login() {
     router.push("/");
     localStorage.setItem("currentUser", "!");
   };
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div className={styles["form-wrapper"]}>
