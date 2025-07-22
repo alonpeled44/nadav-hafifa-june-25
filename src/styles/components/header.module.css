@@ -352,8 +352,13 @@
   }
 
   & .font-size-large {
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
+  }
+
+  & .font-size-medium {
+    height: 32px;
+    width: 32px;
   }
 
   & .font-size-small {

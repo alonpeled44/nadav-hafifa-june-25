@@ -13,17 +13,15 @@ export default function Modal({ isOpen, onClose, children }) {
     }
   }, [isOpen]);
 
-  const onClick = (event) => {
-    if (event.target === dialogRef.current) {
-      onClose();
-    }
-  };
-
   return (
     <dialog
       className={styles.modal}
       ref={dialogRef}
-      onClick={onClick}
+      onClick={(event) => {
+        if (event.target === dialogRef.current) {
+          onClose();
+        }
+      }}
       onClose={onClose}
     >
       <div className={styles["modal-content-wrapper"]}>{children}</div>

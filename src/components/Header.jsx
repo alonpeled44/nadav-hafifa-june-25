@@ -259,46 +259,64 @@ export default function Header() {
               placeholder={
                 <img
                   src="/font-size-icon.png"
-                  className={
-                    selectedFontSize === "large"
-                      ? styles["font-size-large"]
-                      : styles["font-size-small"]
-                  }
-                /> // bruh - array usestate of what isnt selected? and just have a map of whats not selected? or filter? or both? cancer :)
+                  className={styles[`font-size-${selectedFontSize}`]}
+                />
               }
             >
               <div className={styles["mobile-setting-options"]}>
-                <label>
-                  <input
-                    type="radio"
-                    name="fontSize"
-                    value="large"
-                    onChange={handleFontSize}
-                    checked={selectedFontSize === "large"}
-                  />
-                  <div className={styles["image-wrapper"]}>
-                    <img
-                      className={styles["font-size-large"]}
-                      src="/font-size-icon.png"
+                {selectedFontSize !== "large" && (
+                  <label>
+                    <input
+                      type="radio"
+                      name="fontSize"
+                      value="large"
+                      onChange={handleFontSize}
+                      checked={selectedFontSize === "large"}
                     />
-                  </div>
-                </label>
+                    <div className={styles["image-wrapper"]}>
+                      <img
+                        className={styles["font-size-large"]}
+                        src="/font-size-icon.png"
+                      />
+                    </div>
+                  </label>
+                )}
 
-                <label>
-                  <input
-                    type="radio"
-                    name="fontSize"
-                    value="small"
-                    onChange={handleFontSize}
-                    checked={selectedFontSize === "small"}
-                  />
-                  <div className={styles["image-wrapper"]}>
-                    <img
-                      className={styles["font-size-small"]}
-                      src="/font-size-icon.png"
+                {selectedFontSize !== "medium" && (
+                  <label>
+                    <input
+                      type="radio"
+                      name="fontSize"
+                      value="medium"
+                      onChange={handleFontSize}
+                      checked={selectedFontSize === "medium"}
                     />
-                  </div>
-                </label>
+                    <div className={styles["image-wrapper"]}>
+                      <img
+                        className={styles["font-size-medium"]}
+                        src="/font-size-icon.png"
+                      />
+                    </div>
+                  </label>
+                )}
+
+                {selectedFontSize !== "small" && (
+                  <label>
+                    <input
+                      type="radio"
+                      name="fontSize"
+                      value="small"
+                      onChange={handleFontSize}
+                      checked={selectedFontSize === "small"}
+                    />
+                    <div className={styles["image-wrapper"]}>
+                      <img
+                        className={styles["font-size-small"]}
+                        src="/font-size-icon.png"
+                      />
+                    </div>
+                  </label>
+                )}
               </div>
             </SideMenu>
           </div>
