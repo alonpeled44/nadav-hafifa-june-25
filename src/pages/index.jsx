@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useMemo, useContext } from "react";
 import pokemons from "@/lib/pokemons";
 import types from "@/lib/types";
 import sortOptions from "@/lib/sortOptions";
@@ -32,6 +32,28 @@ export default function Home() {
     }
   };
 
+  const showbruh = () => {
+    console.log("filtereselected: ", filterSelected);
+
+    console.log(filteredPokemons);
+  };
+
+  const filteredPokemons = useMemo(() => {
+    if (filterSelected.length === 0) {
+      return pokemons;
+    } else {
+      return pokemons.filter((pokemon) =>
+        pokemon.type.some((type) => filterSelected.includes(type))
+      );
+    }
+  }, [filterSelected, pokemons]);
+
+  const cardGrid = useMemo(() => {
+    return filteredPokemons.map((pokemon) => (
+      <Card key={pokemon.id} pokemon={pokemon} />
+    ));
+  }, [filteredPokemons]);
+
   return (
     <div className={styles["home-page-wrapper"]}>
       <div className={styles["search-and-filters"]}>
@@ -60,13 +82,7 @@ export default function Home() {
       </div>
 
       <div className={styles["card-grid"]}>
-        {pokemons.map((pokemon, index) => (
-          <Card
-            key={index}
-            pokemon={pokemon}
-            onClick={() => setCurrentPokemon(pokemon)}
-          />
-        ))}
+        {cardGrid}
 
         {Object.keys(currentPokemon).length !== 0 && (
           <>
