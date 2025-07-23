@@ -33,7 +33,7 @@ const pokemons = [
     id: 3,
   },
   {
-    name: "amogus",
+    name: "god-emperor flabongius III hegemon of amogustan",
     type: ["sussy"],
     height: 420,
     weight: 123,
@@ -44,7 +44,7 @@ const pokemons = [
     id: 4,
   },
   {
-    name: "amogus",
+    name: "impostor",
     type: ["sus", "impostor"],
     height: 420,
     weight: 123,
@@ -132,7 +132,7 @@ const pokemons = [
     id: 12,
   },
   {
-    name: "amogus",
+    name: "the",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -220,7 +220,7 @@ const pokemons = [
     id: 20,
   },
   {
-    name: "amogus",
+    name: "sussy",
     type: ["impostor"],
     height: 69,
     weight: 69,
@@ -242,7 +242,7 @@ const pokemons = [
     id: 22,
   },
   {
-    name: "amogus",
+    name: "baka",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -407,7 +407,7 @@ const pokemons = [
     id: 37,
   },
   {
-    name: "amogus",
+    name: "eth",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -517,7 +517,7 @@ const pokemons = [
     id: 47,
   },
   {
-    name: "amogus",
+    name: "asdfghjkl",
     type: ["sus"],
     height: 420,
     weight: 123,

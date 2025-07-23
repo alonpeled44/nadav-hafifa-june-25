@@ -12,6 +12,7 @@ export default function Home() {
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [filterSelected, setFilterSelected] = useState([]);
   const [sortSelected, setSortSelected] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
@@ -32,8 +33,8 @@ export default function Home() {
     }
   };
 
-  const showbruh = () => {
-    console.log("sortselected: ", sortSelected);
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
   };
 
   const filteredPokemons = useMemo(() => {
@@ -67,8 +68,12 @@ export default function Home() {
       }
     }
 
+    if (searchValue) {
+      result = result.filter((pokemon) => pokemon.name.includes(searchValue));
+    }
+
     return result;
-  }, [filterSelected, sortSelected, pokemons]);
+  }, [filterSelected, sortSelected, searchValue, pokemons]);
 
   const cardGrid = useMemo(() => {
     return filteredPokemons.map((pokemon) => (
@@ -78,12 +83,13 @@ export default function Home() {
 
   return (
     <div className={styles["home-page-wrapper"]}>
-      <button onClick={showbruh}>show bruh</button>
       <div className={styles["search-and-filters"]}>
         {windowWidth > 1200 && (
           <input
             className={styles.search}
             type="search"
+            value={searchValue}
+            onChange={handleSearch}
             placeholder="🔎 search..."
           />
         )}
