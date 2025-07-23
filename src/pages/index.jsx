@@ -38,34 +38,31 @@ export default function Home() {
   };
 
   const filteredPokemons = useMemo(() => {
-    let result = pokemons;
+    let result = [...pokemons];
 
     if (filterSelected.length > 0) {
-      result = result.filter((pokemon) =>
-        pokemon.type.some((type) => filterSelected.includes(type))
+      result = result.filter(
+        (pokemon) =>
+          pokemon.type.filter((type) => filterSelected.includes(type)).length
       );
     }
 
     if (sortSelected) {
-      result = [...result];
+      result.sort((a, b) => {
+        switch (sortSelected) {
+          case "id":
+            return a.id - b.id;
 
-      switch (sortSelected) {
-        case "id":
-          result.sort((a, b) => a.id - b.id);
-          break;
+          case "alphabetic":
+            return a.name.localeCompare(b.name);
 
-        case "alphabetic":
-          result.sort((a, b) => a.name.localeCompare(b.name));
-          break;
+          case "height":
+            return a.height - b.height;
 
-        case "height":
-          result.sort((a, b) => a.height - b.height);
-          break;
-
-        case "weight":
-          result.sort((a, b) => a.weight - b.weight);
-          break;
-      }
+          case "weight":
+            return a.weight - b.weight;
+        }
+      });
     }
 
     if (searchValue) {
