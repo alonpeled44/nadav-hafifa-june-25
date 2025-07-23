@@ -19,15 +19,7 @@ export default function Dropdown({
         {placeholder}
       </button>
 
-      {isOpen && (
-        <div
-          className={`${styles["dropdown-options"]} ${
-            isOpen ? styles["dropdown-open"] : ""
-          }`}
-        >
-          {children}
-        </div>
-      )}
+      {isOpen && <div className={styles["dropdown-options"]}>{children}</div>}
     </div>
   );
 }
