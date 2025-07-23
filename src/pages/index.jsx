@@ -1,4 +1,4 @@
-import { useState, useMemo, useContext } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import pokemons from "@/lib/pokemons";
 import types from "@/lib/types";
 import sortOptions from "@/lib/sortOptions";
@@ -33,20 +33,42 @@ export default function Home() {
   };
 
   const showbruh = () => {
-    console.log("filtereselected: ", filterSelected);
-
-    console.log(filteredPokemons);
+    console.log("sortselected: ", sortSelected);
   };
 
   const filteredPokemons = useMemo(() => {
-    if (filterSelected.length === 0) {
-      return pokemons;
-    } else {
-      return pokemons.filter((pokemon) =>
+    let result = pokemons;
+
+    if (filterSelected.length > 0) {
+      result = result.filter((pokemon) =>
         pokemon.type.some((type) => filterSelected.includes(type))
       );
     }
-  }, [filterSelected, pokemons]);
+
+    if (sortSelected) {
+      result = [...result];
+
+      switch (sortSelected) {
+        case "id":
+          result.sort((a, b) => a.id - b.id);
+          break;
+
+        case "alphabetic":
+          result.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+
+        case "height":
+          result.sort((a, b) => a.height - b.height);
+          break;
+
+        case "weight":
+          result.sort((a, b) => a.weight - b.weight);
+          break;
+      }
+    }
+
+    return result;
+  }, [filterSelected, sortSelected, pokemons]);
 
   const cardGrid = useMemo(() => {
     return filteredPokemons.map((pokemon) => (
@@ -56,6 +78,7 @@ export default function Home() {
 
   return (
     <div className={styles["home-page-wrapper"]}>
+      <button onClick={showbruh}>show bruh</button>
       <div className={styles["search-and-filters"]}>
         {windowWidth > 1200 && (
           <input
@@ -75,7 +98,7 @@ export default function Home() {
           <Dropdown
             placeholder="sort by"
             options={sortOptions}
-            selectedOptions={filterSelected}
+            selectedOptions={sortSelected}
             handleSelect={handleSortSelect}
           />
         </div>

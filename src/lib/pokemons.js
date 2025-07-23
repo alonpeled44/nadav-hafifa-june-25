@@ -165,7 +165,7 @@ const pokemons = [
     id: 15,
   },
   {
-    name: "amogus",
+    name: "damogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -176,7 +176,7 @@ const pokemons = [
     id: 16,
   },
   {
-    name: "amogus",
+    name: "gamogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -198,7 +198,7 @@ const pokemons = [
     id: 18,
   },
   {
-    name: "amogus",
+    name: "bamogus",
     type: ["amogus"],
     height: 420,
     weight: 123,
@@ -209,7 +209,7 @@ const pokemons = [
     id: 19,
   },
   {
-    name: "amogus",
+    name: "bamogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -222,8 +222,8 @@ const pokemons = [
   {
     name: "amogus",
     type: ["impostor"],
-    height: 420,
-    weight: 123,
+    height: 69,
+    weight: 69,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
     frontShinyViewImageUrl: "yellowAmogusFront.png",
@@ -253,7 +253,7 @@ const pokemons = [
     id: 23,
   },
   {
-    name: "amogus",
+    name: "qamogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -264,7 +264,7 @@ const pokemons = [
     id: 24,
   },
   {
-    name: "amogus",
+    name: "Qamogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -275,7 +275,7 @@ const pokemons = [
     id: 25,
   },
   {
-    name: "amogus",
+    name: "samogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -310,8 +310,8 @@ const pokemons = [
   {
     name: "amogus",
     type: ["sus"],
-    height: 420,
-    weight: 123,
+    height: 25,
+    weight: 999,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
     frontShinyViewImageUrl: "yellowAmogusFront.png",
@@ -333,7 +333,7 @@ const pokemons = [
     name: "amogus",
     type: ["sus"],
     height: 420,
-    weight: 123,
+    weight: 1,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
     frontShinyViewImageUrl: "yellowAmogusFront.png",
@@ -341,7 +341,7 @@ const pokemons = [
     id: 31,
   },
   {
-    name: "amogus",
+    name: "lamogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -396,10 +396,10 @@ const pokemons = [
     id: 36,
   },
   {
-    name: "amogus",
+    name: "zamogus",
     type: ["sus"],
-    height: 420,
-    weight: 123,
+    height: 123,
+    weight: 456,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
     frontShinyViewImageUrl: "yellowAmogusFront.png",
@@ -442,8 +442,8 @@ const pokemons = [
   {
     name: "amogus",
     type: ["sus"],
-    height: 420,
-    weight: 123,
+    height: 999,
+    weight: 12,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
     frontShinyViewImageUrl: "yellowAmogusFront.png",
@@ -451,7 +451,7 @@ const pokemons = [
     id: 41,
   },
   {
-    name: "amogus",
+    name: "xamogus",
     type: ["sus"],
     height: 420,
     weight: 123,
@@ -497,7 +497,7 @@ const pokemons = [
   {
     name: "amogus",
     type: ["sus"],
-    height: 420,
+    height: 20,
     weight: 123,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
@@ -506,9 +506,9 @@ const pokemons = [
     id: 46,
   },
   {
-    name: "amogus",
+    name: "yamogus",
     type: ["sus"],
-    height: 420,
+    height: 42,
     weight: 123,
     frontViewImageUrl: "/redAmogusFront.png",
     backViewImageUrl: "/redAmogusBack.png",
