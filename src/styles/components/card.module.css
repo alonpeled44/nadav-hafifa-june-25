@@ -1,7 +1,6 @@
 .card-wrapper {
   width: 15%;
-  aspect-ratio: 3 / 5;
-
+  height: 40%;
   display: flex;
   flex-direction: column;
 

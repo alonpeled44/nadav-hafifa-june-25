@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import pokemons from "@/lib/pokemons";
 import types from "@/lib/types";
 import sortOptions from "@/lib/sortOptions";
@@ -12,6 +12,7 @@ export default function Home() {
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [filterSelected, setFilterSelected] = useState([]);
   const [sortSelected, setSortSelected] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
@@ -32,6 +33,51 @@ export default function Home() {
     }
   };
 
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const filteredPokemons = useMemo(() => {
+    let result = [...pokemons];
+
+    if (filterSelected.length > 0) {
+      result = result.filter(
+        (pokemon) =>
+          pokemon.type.filter((type) => filterSelected.includes(type)).length
+      );
+    }
+
+    if (sortSelected) {
+      result.sort((a, b) => {
+        switch (sortSelected) {
+          case "id":
+            return a.id - b.id;
+
+          case "alphabetic":
+            return a.name.localeCompare(b.name);
+
+          case "height":
+            return a.height - b.height;
+
+          case "weight":
+            return a.weight - b.weight;
+        }
+      });
+    }
+
+    if (searchValue) {
+      result = result.filter((pokemon) => pokemon.name.includes(searchValue));
+    }
+
+    return result;
+  }, [filterSelected, sortSelected, searchValue, pokemons]);
+
+  const cardGrid = useMemo(() => {
+    return filteredPokemons.map((pokemon) => (
+      <Card key={pokemon.id} pokemon={pokemon} />
+    ));
+  }, [filteredPokemons]);
+
   return (
     <div className={styles["home-page-wrapper"]}>
       <div className={styles["search-and-filters"]}>
@@ -39,6 +85,8 @@ export default function Home() {
           <input
             className={styles.search}
             type="search"
+            value={searchValue}
+            onChange={handleSearch}
             placeholder="🔎 search..."
           />
         )}
@@ -53,20 +101,14 @@ export default function Home() {
           <Dropdown
             placeholder="sort by"
             options={sortOptions}
-            selectedOptions={filterSelected}
+            selectedOptions={sortSelected}
             handleSelect={handleSortSelect}
           />
         </div>
       </div>
 
       <div className={styles["card-grid"]}>
-        {pokemons.map((pokemon, index) => (
-          <Card
-            key={index}
-            pokemon={pokemon}
-            onClick={() => setCurrentPokemon(pokemon)}
-          />
-        ))}
+        {cardGrid}
 
         {Object.keys(currentPokemon).length !== 0 && (
           <>
