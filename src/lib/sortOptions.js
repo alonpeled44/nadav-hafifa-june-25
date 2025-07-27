@@ -1,3 +1,3 @@
-const sortOptions = ["id", "alphabetic", "height", "weight"];
+const sortOptions = ["id", "alphabetic"];
 
 export default sortOptions;

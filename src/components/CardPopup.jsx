@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
 import styles from "@/styles/components/card-popup.module.css";
 
-export default function CardPopup({ pokemon, handleClose }) {
+export default function CardPopup({ digimon, handleClose }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
@@ -23,7 +23,7 @@ export default function CardPopup({ pokemon, handleClose }) {
       setIsOpen(!isOpen);
     };
 
-    if (Object.keys(pokemon).length !== 0) {
+    if (Object.keys(digimon).length !== 0) {
       handleTransition();
     }
   }, []);
@@ -35,7 +35,7 @@ export default function CardPopup({ pokemon, handleClose }) {
       }`}
     >
       <div className={styles["name-shiny-id-and-close"]}>
-        {windowWidth > 1200 && <h1 className={styles.name}>{pokemon.name}</h1>}
+        {windowWidth > 1200 && <h1 className={styles.name}>{digimon.name}</h1>}
 
         <div className={styles["shiny-id-and-close"]}>
           {windowWidth > 1200 && (
@@ -44,7 +44,7 @@ export default function CardPopup({ pokemon, handleClose }) {
                 <input type="checkbox" name="isShiny" /> Shiny
               </label>
 
-              <span className={styles.id}>#{pokemon.id}</span>
+              <span className={styles.id}>#{digimon.id}</span>
             </div>
           )}
 
@@ -58,18 +58,23 @@ export default function CardPopup({ pokemon, handleClose }) {
 
       <div className={styles["imgs-and-data"]}>
         <div className={styles.imgs}>
-          <img src="/yellowAmogusFront.png" alt="" />
-          <img src="/yellowAmogusBack.png" alt="" />
+          <img src={digimon.images[0].href} />
         </div>
 
         <div className={styles["pokemon-data"]}>
-          {windowWidth <= 1200 && <p>{pokemon.name}</p>}
+          {windowWidth <= 1200 && <p>{digimon.name}</p>}
           <p>
             type:
-            {pokemon.type.join(", ")}
+            {digimon.types.length > 0
+              ? digimon.types.map(types => types.type).join(", ")
+              : "i hate niggers"}
           </p>
-          <p>weight: {pokemon.weight}</p>
-          <p>height: {pokemon.height}</p>
+          <p>
+            level:
+            {digimon.levels.length > 0
+              ? digimon.levels.map(levels => levels.level).join(", ")
+              : "i hate niggers"}
+          </p>
         </div>
       </div>
     </div>

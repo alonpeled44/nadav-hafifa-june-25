@@ -1,26 +1,30 @@
 import { useState, useEffect, useMemo, useContext } from "react";
-import pokemons from "@/lib/pokemons";
-import types from "@/lib/types";
 import sortOptions from "@/lib/sortOptions";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
 import Dropdown from "@/components/Dropdown";
 import Card from "@/components/Card";
 import CardPopup from "@/components/CardPopup";
 import styles from "@/styles/pages/home.module.css";
+import { fetchDigimon } from "@/pages/api/digimonAPI";
+import { fetchTypes } from "@/pages/api/types";
 
 export default function Home() {
-  const [currentPokemon, setCurrentPokemon] = useState({});
+  const [currentDigimon, setCurrentDigimon] = useState({});
   const [filterSelected, setFilterSelected] = useState([]);
   const [sortSelected, setSortSelected] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [digimons, setDigimons] = useState([]);
+  const [types, setTypes] = useState([]);
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
+
+  const displayDigimons = 50;
 
   const handleSortSelect = (selectedOption) => {
     setSortSelected(selectedOption);
   };
   const handleClose = () => {
-    setCurrentPokemon({});
+    setCurrentDigimon({});
   };
 
   const handleCheckbox = (event) => {
@@ -37,13 +41,12 @@ export default function Home() {
     setSearchValue(event.target.value);
   };
 
-  const filteredPokemons = useMemo(() => {
-    let result = [...pokemons];
+  const filteredDigimons = useMemo(() => {
+    let result = [...digimons];
 
     if (filterSelected.length > 0) {
-      result = result.filter(
-        (pokemon) =>
-          pokemon.type.filter((type) => filterSelected.includes(type)).length
+      result = result.filter((digimon) =>
+        digimon.types.some((type) => filterSelected.includes(type.type))
       );
     }
 
@@ -66,17 +69,37 @@ export default function Home() {
     }
 
     if (searchValue) {
-      result = result.filter((pokemon) => pokemon.name.includes(searchValue));
+      result = result.filter((digimon) =>
+        digimon.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
     }
 
     return result;
-  }, [filterSelected, sortSelected, searchValue, pokemons]);
+  }, [filterSelected, sortSelected, searchValue, digimons]);
 
   const cardGrid = useMemo(() => {
-    return filteredPokemons.map((pokemon) => (
-      <Card key={pokemon.id} pokemon={pokemon} />
+    return filteredDigimons.map((digimon) => (
+      <Card
+        key={digimon.id}
+        digimon={digimon}
+        onClick={() => setCurrentDigimon(digimon)}
+      />
     ));
-  }, [filteredPokemons]);
+  }, [filteredDigimons]);
+
+  async function loadData() {
+    for (let i = 0; i < displayDigimons; i++) {
+      const digimonData = await fetchDigimon(i + 1);
+      setDigimons((prev) => [...prev, digimonData]);
+    }
+
+    const typeData = await fetchTypes();
+    setTypes([...typeData]);
+  }
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
     <div className={styles["home-page-wrapper"]}>
@@ -110,7 +133,7 @@ export default function Home() {
       <div className={styles["card-grid"]}>
         {cardGrid}
 
-        {Object.keys(currentPokemon).length !== 0 && (
+        {Object.keys(currentDigimon).length !== 0 && (
           <>
             {windowWidth > 1200 && (
               <span
@@ -120,7 +143,7 @@ export default function Home() {
             )}
             <CardPopup
               className={styles.popup}
-              pokemon={currentPokemon}
+              digimon={currentDigimon}
               handleClose={handleClose}
             />
           </>
