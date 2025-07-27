@@ -6,6 +6,7 @@ export default function Home() {
     <div className={styles["home-page-wrapper"]}>
       placeholder just to spite lior
       <Link href="/login">amoongus</Link>
+      <p>this is a paragraph blyat</p>
     </div>
   );
 }
