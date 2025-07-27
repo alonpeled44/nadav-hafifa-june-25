@@ -4,9 +4,9 @@ import { WindowWidthContext } from "@/context/WindowWidthContext";
 import Dropdown from "@/components/Dropdown";
 import Card from "@/components/Card";
 import CardPopup from "@/components/CardPopup";
-import styles from "@/styles/pages/home.module.css";
 import { fetchDigimon } from "@/pages/api/digimonAPI";
 import { fetchTypes } from "@/pages/api/types";
+import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
   const [currentDigimon, setCurrentDigimon] = useState({});
@@ -58,12 +58,6 @@ export default function Home() {
 
           case "alphabetic":
             return a.name.localeCompare(b.name);
-
-          case "height":
-            return a.height - b.height;
-
-          case "weight":
-            return a.weight - b.weight;
         }
       });
     }
