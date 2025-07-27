@@ -10,8 +10,17 @@
   --font-size-small: 13px;
   --font-size-medium: 16px;
   --font-size-large: 19px;
-
   --font-size-base: var(--font-size-medium);
+}
+
+html[data-font-size="small"] {
+  --font-size-base: var(--font-size-small);
+}
+html[data-font-size="medium"] {
+  --font-size-base: var(--font-size-medium);
+}
+html[data-font-size="large"] {
+  --font-size-base: var(--font-size-large);
 }
 
 html {

@@ -15,7 +15,7 @@ export default function Header() {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("light");
-  const [selectedFontSize, setSelectedFontSize] = useState("medium");
+  const [selectedFontSize, setSelectedFontSize] = useState("medium"); //this should be in app.jsx and passed down as a context or props, then its used there and shit idk check chat gpt
 
   const { displayName, setDisplayName } = useContext(DisplayNameContext);
 
@@ -54,10 +54,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const root = document.documentElement;
-
-    const fontSizeVar = `var(--font-size-${selectedFontSize})`;
-    root.style.setProperty("--font-size-base", fontSizeVar);
+    document.documentElement.setAttribute("data-font-size", selectedFontSize);
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
