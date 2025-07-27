@@ -105,22 +105,8 @@ export default function Home() {
     loadData();
   }, []);
 
-  const showbruh = () => {
-    console.log(digimons);
-    console.log("length: ", digimons?.length);
-
-    console.log("types:", types);
-
-    if (digimons && digimons.length > 0 && digimons[0]) {
-      console.log("first boy: ", digimons[0]);
-    } else {
-      console.log("Digimon data not loaded yet or empty");
-    }
-  };
-
   return (
     <div className={styles["home-page-wrapper"]}>
-      <button onClick={showbruh}>show bruh</button>
       <div className={styles["search-and-filters"]}>
         {windowWidth > 1200 && (
           <input
