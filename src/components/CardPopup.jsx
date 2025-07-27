@@ -44,7 +44,7 @@ export default function CardPopup({ digimon, handleClose }) {
                 <input type="checkbox" name="isShiny" /> Shiny
               </label>
 
-              <span className={styles.id}>#{digimon.id}</span>
+              <p className={styles.id}>#{digimon.id}</p>
             </div>
           )}
 
@@ -65,15 +65,11 @@ export default function CardPopup({ digimon, handleClose }) {
           {windowWidth <= 1200 && <p>{digimon.name}</p>}
           <p>
             type:
-            {digimon.types.length > 0
-              ? digimon.types.map(types => types.type).join(", ")
-              : "i hate niggers"}
+            {digimon.types.map((types) => types.type).join(", ")}
           </p>
           <p>
             level:
-            {digimon.levels.length > 0
-              ? digimon.levels.map(levels => levels.level).join(", ")
-              : "i hate niggers"}
+            {digimon.levels.map((levels) => levels.level).join(", ")}
           </p>
         </div>
       </div>

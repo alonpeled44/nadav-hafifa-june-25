@@ -78,13 +78,17 @@ export default function Home() {
   }, [filterSelected, sortSelected, searchValue, digimons]);
 
   const cardGrid = useMemo(() => {
-    return filteredDigimons.map((digimon) => (
-      <Card
-        key={digimon.id}
-        digimon={digimon}
-        onClick={() => setCurrentDigimon(digimon)}
-      />
-    ));
+    return filteredDigimons
+      .filter(
+        (digimon) => digimon.types.length > 0 && digimon.levels.length > 0
+      )
+      .map((digimon) => (
+        <Card
+          key={digimon.id}
+          digimon={digimon}
+          onClick={() => setCurrentDigimon(digimon)}
+        />
+      ));
   }, [filteredDigimons]);
 
   async function loadData() {

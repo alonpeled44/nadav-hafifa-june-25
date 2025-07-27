@@ -10,7 +10,7 @@ export default function Card({ digimon, onClick }) {
       {windowWidth > 1200 && (
         <div className={styles["name-and-number"]}>
           <p>{digimon.name}</p>
-          <span>{digimon.id}</span>
+          <p>{digimon.id}</p>
         </div>
       )}
 
@@ -20,15 +20,11 @@ export default function Card({ digimon, onClick }) {
         <div className={styles["pokemon-data"]}>
           <p>
             type:
-            {digimon.types.length > 0
-              ? digimon.types.map(types => types.type).join(", ")
-              : "i hate niggers"}
+            {digimon.types.map((types) => types.type).join(", ")}
           </p>
           <p>
             level:
-            {digimon.levels.length > 0
-              ? digimon.levels.map(levels => levels.level).join(", ")
-              : "i hate niggers"}
+            {digimon.levels.map((levels) => levels.level).join(", ")}
           </p>
         </div>
       )}
