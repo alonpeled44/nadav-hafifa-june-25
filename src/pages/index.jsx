@@ -45,9 +45,6 @@ export default function Home() {
     let result = [...digimons];
 
     if (filterSelected.length > 0) {
-      console.log("filterselected: ", filterSelected);
-      console.log("digimon: ");
-      console.log(" result ", result);
       result = result.filter((digimon) =>
         digimon.types.some((type) => filterSelected.includes(type.type))
       );
@@ -90,18 +87,17 @@ export default function Home() {
     ));
   }, [filteredDigimons]);
 
-  useEffect(() => {
-    async function loadData() {
-      for (let i = 0; i < displayDigimons; i++) {
-        const digimonData = await fetchDigimon(i + 1);
-        setDigimons((prev) => [...prev, digimonData]);
-        console.log(digimonData);
-      }
-
-      const typeData = await fetchTypes();
-      setTypes([...typeData]);
+  async function loadData() {
+    for (let i = 0; i < displayDigimons; i++) {
+      const digimonData = await fetchDigimon(i + 1);
+      setDigimons((prev) => [...prev, digimonData]);
     }
 
+    const typeData = await fetchTypes();
+    setTypes([...typeData]);
+  }
+
+  useEffect(() => {
     loadData();
   }, []);
 

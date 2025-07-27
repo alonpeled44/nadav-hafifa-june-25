@@ -9,6 +9,6 @@ export async function fetchTypes() {
 
     types.push(...data.content.fields.map((field) => field.name));
   }
-  console.log(types);
+  
   return types;
 }

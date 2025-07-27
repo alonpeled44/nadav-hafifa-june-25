@@ -66,13 +66,13 @@ export default function CardPopup({ digimon, handleClose }) {
           <p>
             type:
             {digimon.types.length > 0
-              ? digimon.types[0].type
+              ? digimon.types.map(types => types.type).join(", ")
               : "i hate niggers"}
           </p>
           <p>
             level:
             {digimon.levels.length > 0
-              ? digimon.levels[0].level
+              ? digimon.levels.map(levels => levels.level).join(", ")
               : "i hate niggers"}
           </p>
         </div>
