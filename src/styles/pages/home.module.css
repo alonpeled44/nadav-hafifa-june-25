@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
 
-  font-size: 3rem;
+  font-size: 1.5rem;
 
   & .mobile-title {
     height: 30%;
@@ -18,7 +18,7 @@
       padding-block: 24px;
 
       & h1 {
-        font-size: 4.5rem;
+        font-size: 2.5rem;
       }
 
       & img {
@@ -34,14 +34,14 @@
       gap: 16px;
 
       & p {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
       }
 
       & button {
         padding: 4px;
 
         border-radius: 12px;
-        font-size: 2.5rem;
+        font-size: 1.5rem;
       }
     }
   }

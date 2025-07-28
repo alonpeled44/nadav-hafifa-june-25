@@ -10,11 +10,10 @@ import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
-export default function Header() {
+export default function Header({selectedTheme, setSelectedTheme}) {
   const [windowWidth, setWindowWidth] = useState(0);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [selectedTheme, setSelectedTheme] = useState("light");
   const [selectedFontSize, setSelectedFontSize] = useState("medium");
 
   const { displayName, setDisplayName } = useContext(DisplayNameContext);
@@ -56,6 +55,10 @@ export default function Header() {
   useEffect(() => {
     const root = document.documentElement;
 
+    const primaryColor = `var(--font-size-${selectedFontSize})`
+
+
+
     const fontSizeVar = `var(--font-size-${selectedFontSize})`;
     root.style.setProperty("--font-size-base", fontSizeVar);
 
@@ -66,7 +69,7 @@ export default function Header() {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [selectedFontSize]);
+  }, [selectedFontSize, selectedTheme]);
 
   return (
     <header className={styles.header}>
