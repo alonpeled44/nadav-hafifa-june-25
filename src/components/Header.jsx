@@ -1,17 +1,18 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { DisplayNameContext } from "@/context/DisplayNameContext";
+import { WindowWidthContext } from "@/context/WindowWidthContext";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
 export default function Header() {
-  const [windowWidth, setWindowWidth] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const { displayName, setDisplayName } = useContext(DisplayNameContext);
+  const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
   const localDate = new Date().toLocaleDateString("en-UK");
 
@@ -29,16 +30,6 @@ export default function Header() {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <header className={styles.header}>
       {windowWidth <= 1200 && pathname !== "/login" && (
@@ -50,7 +41,9 @@ export default function Header() {
           />
 
           <nav
-            className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ""}`}
+            className={`${styles.overlay} ${
+              isOpen ? styles["overlay-open"] : ""
+            }`}
           >
             <Link className={styles["overlay-link"]} href="/">
               pokédex

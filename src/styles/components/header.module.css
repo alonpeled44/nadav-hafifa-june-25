@@ -11,6 +11,7 @@
 
   & .overlay {
     position: fixed;
+    z-index: 2;
 
     height: 0;
     width: 100%;
@@ -25,7 +26,6 @@
 
     overflow-x: hidden;
 
-    z-index: 2;
 
     transition: height 0.3s ease;
 
@@ -34,23 +34,17 @@
     }
   }
 
-  & .overlayOpen {
-    height: 30%;
-
-    transition: height 0.3s ease;
-  }
-
   & .overlay-icon {
     position: absolute;
     top: 8px;
     right: 12px;
+    z-index: 3;
 
     height: 64px;
     aspect-ratio: 1 / 1;
 
     cursor: pointer;
 
-    z-index: 3;
   }
 
   & .logo-and-user-information {
@@ -147,6 +141,7 @@
 
     & .overlay {
       position: fixed;
+      top: 0;
 
       height: 0;
       width: 100%;
@@ -159,8 +154,6 @@
 
       background-color: rgb(100, 100, 200);
 
-      z-index: 2;
-
       transition: height 0.3s ease;
 
       & .overlay-link {
@@ -170,7 +163,7 @@
       }
     }
 
-    & .overlayOpen {
+    & .overlay-open {
       height: 30%;
 
       transition: height 0.3s ease;

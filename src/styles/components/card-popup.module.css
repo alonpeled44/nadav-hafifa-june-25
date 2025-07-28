@@ -1,0 +1,135 @@
+.card-popup-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+
+  width: 60%;
+  height: 60%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 12px;
+
+  border-radius: 36px;
+  border: 4px solid rgb(0, 0, 0);
+
+  background-color: rgb(255, 255, 255);
+
+  & .name-shiny-id-and-close {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px 24px;
+
+    & .name {
+      font-size: 3rem;
+    }
+
+    & .shiny-id-and-close {
+      display: flex;
+      gap: 16px;
+
+      font-size: 1.8rem;
+
+      & .close-button {
+        height: 36px;
+        aspect-ratio: 1 / 1;
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .imgs {
+    display: flex;
+    justify-content: center;
+  }
+
+  & .pokemon-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 24px;
+
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .card-popup-wrapper {
+    position: absolute;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 12px;
+
+    transition: transform 0.3s ease;
+
+    border-radius: 36px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    border: none;
+    border-top: 4px solid rgb(0, 0, 0);
+
+    background-color: rgb(255, 255, 255);
+
+    & .name-shiny-id-and-close {
+      display: flex;
+      justify-content: flex-end;
+
+      padding: 12px 24px;
+
+      & .shiny-id-and-close {
+        & .close-button {
+          height: 24px;
+          aspect-ratio: 1 / 1;
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    & .imgs-and-data {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      & .imgs {
+        display: flex;
+        justify-content: center;
+
+        & img {
+          width: 120px;
+          aspect-ratio: 1 / 1;
+        }
+      }
+
+      & .pokemon-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        padding-inline: 24px;
+      }
+    }
+  }
+
+  & .card-popup-open {
+    transform: translate(-50%, 0);
+    transition: transform 0.3s ease;
+  }
+}
