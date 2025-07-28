@@ -159,17 +159,17 @@
 
             cursor: pointer;
 
-            & .font-size-large {
+            & .font-size-option-large {
               height: 56px;
               aspect-ratio: 1 / 1;
             }
 
-            & .font-size-medium {
+            & .font-size-option-medium {
               height: 48px;
               aspect-ratio: 1 / 1;
             }
 
-            & .font-size-small {
+            & .font-size-option-small {
               height: 36px;
               aspect-ratio: 1 / 1;
             }
@@ -341,7 +341,7 @@
     width: 48px;
   }
 
-  & .font-size-large {
+  & .font-size-option-large {
     height: 40px;
     width: 40px;
 
@@ -349,7 +349,7 @@
     transition: width 0.3s ease;
   }
 
-  & .font-size-medium {
+  & .font-size-option-medium {
     height: 32px;
     width: 32px;
 
@@ -357,7 +357,7 @@
     transition: width 0.3s ease;
   }
 
-  & .font-size-small {
+  & .font-size-option-small {
     height: 24px;
     width: 24px;
 

@@ -54,6 +54,11 @@ export default function Header() {
   };
 
   useEffect(() => {
+    const root = document.documentElement;
+
+    const fontSizeVar = `var(--font-size-${selectedFontSize})`;
+    root.style.setProperty("--font-size-base", fontSizeVar);
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
@@ -61,7 +66,7 @@ export default function Header() {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [selectedFontSize]);
 
   return (
     <header className={styles.header}>
@@ -183,7 +188,7 @@ export default function Header() {
                   />
                   <div className={styles["image-wrapper"]}>
                     <img
-                      className={styles["font-size-large"]}
+                      className={styles["font-size-option-large"]}
                       src="/font-size-icon.png"
                     />
                   </div>
@@ -204,7 +209,7 @@ export default function Header() {
                   />
                   <div className={styles["image-wrapper"]}>
                     <img
-                      className={styles["font-size-medium"]}
+                      className={styles["font-size-option-medium"]}
                       src="/font-size-icon.png"
                     />
                   </div>
@@ -225,7 +230,7 @@ export default function Header() {
                   />
                   <div className={styles["image-wrapper"]}>
                     <img
-                      className={styles["font-size-small"]}
+                      className={styles["font-size-option-small"]}
                       src="/font-size-icon.png"
                     />
                   </div>
@@ -259,7 +264,7 @@ export default function Header() {
               placeholder={
                 <img
                   src="/font-size-icon.png"
-                  className={styles[`font-size-${selectedFontSize}`]}
+                  className={styles[`font-size-option-${selectedFontSize}`]}
                 />
               }
             >
@@ -275,7 +280,7 @@ export default function Header() {
                     />
                     <div className={styles["image-wrapper"]}>
                       <img
-                        className={styles["font-size-large"]}
+                        className={styles["font-size-option-large"]}
                         src="/font-size-icon.png"
                       />
                     </div>
@@ -293,7 +298,7 @@ export default function Header() {
                     />
                     <div className={styles["image-wrapper"]}>
                       <img
-                        className={styles["font-size-medium"]}
+                        className={styles["font-size-option-medium"]}
                         src="/font-size-icon.png"
                       />
                     </div>
@@ -311,7 +316,7 @@ export default function Header() {
                     />
                     <div className={styles["image-wrapper"]}>
                       <img
-                        className={styles["font-size-small"]}
+                        className={styles["font-size-option-small"]}
                         src="/font-size-icon.png"
                       />
                     </div>
