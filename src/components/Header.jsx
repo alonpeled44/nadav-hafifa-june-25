@@ -54,8 +54,11 @@ export default function Header() {
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-font-size", selectedFontSize);
+    const root = document.documentElement;
 
+    const fontSizeVar = `var(--font-size-${selectedFontSize})`;
+    root.style.setProperty("--font-size-base", fontSizeVar);
+    
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };

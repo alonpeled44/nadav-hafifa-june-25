@@ -13,16 +13,6 @@
   --font-size-base: var(--font-size-medium);
 }
 
-html[data-font-size="small"] {
-  --font-size-base: var(--font-size-small);
-}
-html[data-font-size="medium"] {
-  --font-size-base: var(--font-size-medium);
-}
-html[data-font-size="large"] {
-  --font-size-base: var(--font-size-large);
-}
-
 html {
   font-size: var(--font-size-base);
 }
