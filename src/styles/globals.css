@@ -6,6 +6,29 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+:root {
+  --font-size-small: 13px;
+  --font-size-medium: 16px;
+  --font-size-large: 19px;
+  --font-size-base: var(--font-size-medium);
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+.theme-light {
+  --primary-color: rgb(240, 240, 240);
+  --secondary-color: rgb(220, 220, 220);
+  --text-color: rgb(0, 0, 0);
+}
+
+.theme-dark {
+  --primary-color: rgb(30, 30, 60);
+  --secondary-color: rgb(50, 50, 80);
+  --text-color: rgb(255, 255, 255);
+}
+
 :root,
 html,
 body,
@@ -32,6 +55,15 @@ body > div {
   }
 }
 
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--primary-color);
+}
+
 button {
   cursor: pointer;
 
@@ -40,11 +72,11 @@ button {
 
 @media only screen and (max-width: 1200px) {
   html {
-    font-size: 0.6rem;
+    font-size: var(--font-size-base);
 
     & body > div {
       background-image: none;
-      background-color: rgba(40, 40, 140, 0.3);
+      background-color: var(--primary-color);
     }
   }
 }

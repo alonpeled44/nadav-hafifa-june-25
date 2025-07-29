@@ -10,11 +10,16 @@ import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
   const [currentDigimon, setCurrentDigimon] = useState({});
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filterSelected, setFilterSelected] = useState([]);
   const [sortSelected, setSortSelected] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [digimons, setDigimons] = useState([]);
   const [types, setTypes] = useState([]);
+
+  const handleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
@@ -113,18 +118,43 @@ export default function Home() {
         )}
         <div className={styles["filter-and-sort"]}>
           <Dropdown
-            placeholder="filter"
-            options={types}
             selectedOptions={filterSelected}
             isCheckbox={true}
-            onChange={handleCheckbox}
-          />
+            placeholder="filter"
+            onClick={handleFilter}
+          >
+            <div className={styles["dropdown-wrapper"]}>
+              {types.map((option) => (
+                <label className={styles.option} key={option}>
+                  <input
+                    type="checkbox"
+                    value={option}
+                    onChange={handleCheckbox}
+                    checked={filterSelected.includes(option)}
+                  />
+
+                  {option}
+                </label>
+              ))}
+            </div>
+          </Dropdown>
           <Dropdown
-            placeholder="sort by"
-            options={sortOptions}
             selectedOptions={sortSelected}
-            handleSelect={handleSortSelect}
-          />
+            isCheckbox={true}
+            placeholder="sort by"
+          >
+            <div className={styles["dropdown-wrapper"]}>
+              {sortOptions.map((option) => (
+                <label
+                  className={styles["select-option"]}
+                  key={option}
+                  onClick={() => handleSortSelect(option)}
+                >
+                  {option}
+                </label>
+              ))}
+            </div>
+          </Dropdown>
         </div>
       </div>
 

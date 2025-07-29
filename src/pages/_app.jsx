@@ -9,6 +9,7 @@ import "@/styles/globals.css";
 export default function App({ Component, pageProps }) {
   const [displayName, setDisplayName] = useState("");
   const [windowWidth, setWindowWidth] = useState(0);
+  const [selectedTheme, setSelectedTheme] = useState("light");
 
   const pathname = usePathname();
 
@@ -24,6 +25,9 @@ export default function App({ Component, pageProps }) {
       setDisplayName(user);
     }
 
+    document.body.classList.remove("theme-light", "theme-dark");
+    document.body.classList.add(`theme-${selectedTheme}`);
+
     setWindowWidth(window.innerWidth);
 
     const handleResize = () => {
@@ -31,12 +35,14 @@ export default function App({ Component, pageProps }) {
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [pathname]);
-
+  }, [pathname, selectedTheme]);
   return (
     <WindowWidthContextProvider value={{ windowWidth, setWindowWidth }}>
       <DisplayNameContextProvider value={{ displayName, setDisplayName }}>
-        <Header />
+        <Header
+          selectedTheme={selectedTheme}
+          setSelectedTheme={setSelectedTheme}
+        />
         <main>
           <Component {...pageProps} />
         </main>

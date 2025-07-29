@@ -1,0 +1,38 @@
+.circle-dropdown-wrapper {
+  height: 64px;
+  width: 64px;
+
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  z-index: 1;
+
+  & .circle-dropdown {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+
+    border-radius: 50%;
+  }
+
+  & .circle-dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 0;
+
+    height: fit-content;
+    width: 100%;
+
+    padding-top: 48px;
+
+    transform: translateY(-20%);
+
+    align-items: center;
+
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+  }
+}
