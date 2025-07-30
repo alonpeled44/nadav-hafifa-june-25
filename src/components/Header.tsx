@@ -10,7 +10,15 @@ import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
-export default function Header({ selectedTheme, setSelectedTheme }) {
+type HeaderProps = {
+  selectedTheme: string;
+  setSelectedTheme: (theme: string) => void;
+};
+
+export default function Header({
+  selectedTheme,
+  setSelectedTheme,
+}: HeaderProps) {
   const [windowWidth, setWindowWidth] = useState(0);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -38,17 +46,15 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
     setSettingsOpen(!settingsOpen);
   };
 
-  const toggleTheme = (event) => {
-    setSelectedTheme(
-      windowWidth >= 1200
-        ? event.target.value
-        : selectedTheme === "light"
-        ? "dark"
-        : "light"
-    );
+  const toggleTheme = () => {
+    setSelectedTheme(selectedTheme === "light" ? "dark" : "light");
   };
 
-  const handleFontSize = (event) => {
+  const setTheme = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedTheme(event.target.value);
+  };
+
+  const handleFontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedFontSize(event.target.value);
   };
 
@@ -137,13 +143,12 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
               <div className={styles["setting-options"]}>
                 <label
                   className={selectedTheme === "light" ? styles.selected : ""}
-                  l
                 >
                   <input
                     type="radio"
                     name="theme"
                     value="light"
-                    onChange={toggleTheme}
+                    onChange={setTheme}
                     checked={selectedTheme === "light"}
                   />
                   <div className={styles["image-wrapper"]}>
@@ -159,7 +164,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
                     type="radio"
                     name="theme"
                     value="dark"
-                    onChange={toggleTheme}
+                    onChange={setTheme}
                     checked={selectedTheme === "dark"}
                   />
                   <div className={styles["image-wrapper"]}>

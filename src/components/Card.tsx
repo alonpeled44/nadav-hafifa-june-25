@@ -1,8 +1,14 @@
 import { useContext } from "react";
+import { Digimon } from "@/types/Digimon";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
 import styles from "@/styles/components/card.module.css";
 
-export default function Card({ digimon, onClick }) {
+type CardProps = {
+  digimon: Digimon;
+  onClick: () => void;
+};
+
+export default function Card({ digimon, onClick }: CardProps) {
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
 
   return (

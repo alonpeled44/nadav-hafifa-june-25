@@ -1,4 +1,4 @@
-export async function fetchDigimon(id) {
+export async function fetchDigimon(id: number) {
   const res = await fetch(`https://digi-api.com/api/v1/digimon/${id}`);
   if (!res.ok) throw new Error("Network response was not ok");
 

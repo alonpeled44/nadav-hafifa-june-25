@@ -1,8 +1,14 @@
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import styles from "@/styles/components/modal.module.css";
 
-export default function Modal({ isOpen, onClose, children }) {
-  const dialogRef = useRef(null);
+type ModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
+};
+
+export default function Modal({ isOpen, onClose, children }: ModalProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const dialog = dialogRef.current;

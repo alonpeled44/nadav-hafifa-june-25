@@ -1,14 +1,12 @@
 import { useState } from "react";
+import { DropdownProps } from "@/types/components";
+
 import styles from "@/styles/components/circle-dropdown.module.css";
 
-export default function Dropdown({
+export default function CircleDropdown({
   placeholder,
-  options,
-  selectedOptions,
-  isCheckbox = false,
-  onChange,
   children,
-}) {
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
