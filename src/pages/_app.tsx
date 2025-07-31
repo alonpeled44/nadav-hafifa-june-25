@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
+import { AppProps } from "next/app";
 import DisplayNameContextProvider from "@/context/DisplayNameContext";
 import WindowWidthContextProvider from "@/context/WindowWidthContext";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   const [displayName, setDisplayName] = useState("");
   const [windowWidth, setWindowWidth] = useState(0);
   const [selectedTheme, setSelectedTheme] = useState("light");

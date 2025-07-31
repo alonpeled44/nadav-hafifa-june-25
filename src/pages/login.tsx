@@ -14,8 +14,8 @@ export default function Login() {
 
   const router = useRouter();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     const foundUser = users.find((user) => user.username === username);
 
@@ -50,7 +50,7 @@ export default function Login() {
             placeholder="username"
             required
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
           />
 
           <input
@@ -59,23 +59,18 @@ export default function Login() {
             placeholder="password"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
 
           <span className={styles.error}>{errorMessage}</span>
         </div>
 
         <div className={styles.buttons}>
-          <Button
-            type="submit"
-            text="log in"
-            className={styles["user-login"]}
-          />
+          <Button type="submit" text="log in" />
 
           <Button
             type="button"
             text="join as guest"
-            className={styles["guest-login"]}
             onClick={handleGuestLogin}
           />
         </div>

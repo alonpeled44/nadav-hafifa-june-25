@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo, useContext } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
+import { Digimon } from "@/types/Digimon";
 import sortOptions from "@/lib/sortOptions";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
 import Dropdown from "@/components/Dropdown";
@@ -9,13 +10,21 @@ import { fetchTypes } from "@/pages/api/types";
 import styles from "@/styles/pages/home.module.css";
 
 export default function Home() {
-  const [currentDigimon, setCurrentDigimon] = useState({});
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [filterSelected, setFilterSelected] = useState([]);
+  const dummyDigimon: Digimon = {
+    id: 0,
+    name: "dummy",
+    images: [{ href: "", transparent: false }],
+    levels: [{ id: 0, level: "dummy" }],
+    types: [{ id: 0, type: "dummy" }],
+  };
+
+  const [currentDigimon, setCurrentDigimon] = useState<Digimon>(dummyDigimon);
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
+  const [filterSelected, setFilterSelected] = useState<string[]>([]);
   const [sortSelected, setSortSelected] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const [digimons, setDigimons] = useState([]);
-  const [types, setTypes] = useState([]);
+  const [digimons, setDigimons] = useState<Digimon[]>([]);
+  const [types, setTypes] = useState<string[]>([]);
 
   const handleFilter = () => {
     setIsFilterOpen(!isFilterOpen);
@@ -25,14 +34,14 @@ export default function Home() {
 
   const displayDigimons = 50;
 
-  const handleSortSelect = (selectedOption) => {
+  const handleSortSelect = (selectedOption: "id" | "alphabetic") => {
     setSortSelected(selectedOption);
   };
   const handleClose = () => {
-    setCurrentDigimon({});
+    setCurrentDigimon(dummyDigimon);
   };
 
-  const handleCheckbox = (event) => {
+  const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
     const value = event.target.value;
     if (isChecked) {
@@ -42,7 +51,7 @@ export default function Home() {
     }
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
@@ -63,6 +72,9 @@ export default function Home() {
 
           case "alphabetic":
             return a.name.localeCompare(b.name);
+
+          default:
+            return 0;
         }
       });
     }
@@ -117,12 +129,7 @@ export default function Home() {
           />
         )}
         <div className={styles["filter-and-sort"]}>
-          <Dropdown
-            selectedOptions={filterSelected}
-            isCheckbox={true}
-            placeholder="filter"
-            onClick={handleFilter}
-          >
+          <Dropdown placeholder="filter">
             <div className={styles["dropdown-wrapper"]}>
               {types.map((option) => (
                 <label className={styles.option} key={option}>
@@ -138,11 +145,7 @@ export default function Home() {
               ))}
             </div>
           </Dropdown>
-          <Dropdown
-            selectedOptions={sortSelected}
-            isCheckbox={true}
-            placeholder="sort by"
-          >
+          <Dropdown placeholder="sort by">
             <div className={styles["dropdown-wrapper"]}>
               {sortOptions.map((option) => (
                 <label
@@ -161,7 +164,7 @@ export default function Home() {
       <div className={styles["card-grid"]}>
         {cardGrid}
 
-        {Object.keys(currentDigimon).length !== 0 && (
+        {currentDigimon.id !== 0 && (
           <>
             {windowWidth > 1200 && (
               <span
@@ -169,11 +172,7 @@ export default function Home() {
                 className={styles["darken-background-on-popup"]}
               />
             )}
-            <CardPopup
-              className={styles.popup}
-              digimon={currentDigimon}
-              handleClose={handleClose}
-            />
+            <CardPopup digimon={currentDigimon} handleClose={handleClose} />
           </>
         )}
       </div>

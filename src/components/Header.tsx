@@ -10,7 +10,15 @@ import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
 
-export default function Header({ selectedTheme, setSelectedTheme }) {
+type HeaderProps = {
+  selectedTheme: string;
+  setSelectedTheme: (theme: string) => void;
+};
+
+export default function Header({
+  selectedTheme,
+  setSelectedTheme,
+}: HeaderProps) {
   const [windowWidth, setWindowWidth] = useState(0);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -38,18 +46,16 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
     setSettingsOpen(!settingsOpen);
   };
 
-  const toggleTheme = (event) => {
-    setSelectedTheme(
-      windowWidth >= 1200
-        ? event.target.value
-        : selectedTheme === "light"
-        ? "dark"
-        : "light"
-    );
+  const toggleTheme = () => {
+    setSelectedTheme(selectedTheme === "light" ? "dark" : "light");
   };
 
-  const handleFontSize = (event) => {
-    setSelectedFontSize(event.target.value);
+  const setTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setSelectedTheme(event.currentTarget.value);
+  };
+
+  const handleFontSize = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setSelectedFontSize(event.currentTarget.value);
   };
 
   useEffect(() => {
@@ -137,15 +143,8 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
               <div className={styles["setting-options"]}>
                 <label
                   className={selectedTheme === "light" ? styles.selected : ""}
-                  l
                 >
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="light"
-                    onChange={toggleTheme}
-                    checked={selectedTheme === "light"}
-                  />
+                  <button value="light" onClick={setTheme} />
                   <div className={styles["image-wrapper"]}>
                     <img src="/sun-icon.png" />
                   </div>
@@ -155,13 +154,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
                 <label
                   className={selectedTheme === "dark" ? styles.selected : ""}
                 >
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="dark"
-                    onChange={toggleTheme}
-                    checked={selectedTheme === "dark"}
-                  />
+                  <button value="dark" onClick={setTheme} />
                   <div className={styles["image-wrapper"]}>
                     <img src="/moon-icon.png" />
                   </div>
@@ -179,13 +172,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
                     selectedFontSize === "large" ? styles.selected : ""
                   }
                 >
-                  <input
-                    type="radio"
-                    name="fontSize"
-                    value="large"
-                    onChange={handleFontSize}
-                    checked={selectedFontSize === "large"}
-                  />
+                  <button value="large" onClick={handleFontSize} />
                   <div className={styles["image-wrapper"]}>
                     <img
                       className={styles["font-size-option-large"]}
@@ -200,13 +187,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
                     selectedFontSize === "medium" ? styles.selected : ""
                   }
                 >
-                  <input
-                    type="radio"
-                    name="fontSize"
-                    value="medium"
-                    onChange={handleFontSize}
-                    checked={selectedFontSize === "medium"}
-                  />
+                  <button value="medium" onClick={handleFontSize} />
                   <div className={styles["image-wrapper"]}>
                     <img
                       className={styles["font-size-option-medium"]}
@@ -221,13 +202,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
                     selectedFontSize === "small" ? styles.selected : ""
                   }
                 >
-                  <input
-                    type="radio"
-                    name="fontSize"
-                    value="small"
-                    onChange={handleFontSize}
-                    checked={selectedFontSize === "small"}
-                  />
+                  <button value="small" onClick={handleFontSize} />
                   <div className={styles["image-wrapper"]}>
                     <img
                       className={styles["font-size-option-small"]}
@@ -271,13 +246,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
               <div className={styles["mobile-setting-options"]}>
                 {selectedFontSize !== "large" && (
                   <label>
-                    <input
-                      type="radio"
-                      name="fontSize"
-                      value="large"
-                      onChange={handleFontSize}
-                      checked={selectedFontSize === "large"}
-                    />
+                    <button value="large" onClick={handleFontSize} />
                     <div className={styles["image-wrapper"]}>
                       <img
                         className={styles["font-size-option-large"]}
@@ -289,13 +258,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
 
                 {selectedFontSize !== "medium" && (
                   <label>
-                    <input
-                      type="radio"
-                      name="fontSize"
-                      value="medium"
-                      onChange={handleFontSize}
-                      checked={selectedFontSize === "medium"}
-                    />
+                    <button value="medium" onClick={handleFontSize} />
                     <div className={styles["image-wrapper"]}>
                       <img
                         className={styles["font-size-option-medium"]}
@@ -307,13 +270,7 @@ export default function Header({ selectedTheme, setSelectedTheme }) {
 
                 {selectedFontSize !== "small" && (
                   <label>
-                    <input
-                      type="radio"
-                      name="fontSize"
-                      value="small"
-                      onChange={handleFontSize}
-                      checked={selectedFontSize === "small"}
-                    />
+                    <button value="small" onClick={handleFontSize} />
                     <div className={styles["image-wrapper"]}>
                       <img
                         className={styles["font-size-option-small"]}

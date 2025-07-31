@@ -1,5 +1,5 @@
-export async function fetchTypes() {
-  const types = [];
+export async function fetchTypes(): Promise<string[]> {
+  const types: string[] = [];
   const totalPages = 10; //actually like 30
 
   for (let page = 0; page < totalPages; page++) {
@@ -7,8 +7,10 @@ export async function fetchTypes() {
     if (!res.ok) throw new Error(`Failed to fetch page ${page}`);
     const data = await res.json();
 
-    types.push(...data.content.fields.map((field) => field.name));
+    types.push(
+      ...data.content.fields.map((field: { name: string }) => field.name)
+    );
   }
-  
+
   return types;
 }

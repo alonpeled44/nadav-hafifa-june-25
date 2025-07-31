@@ -1,8 +1,14 @@
 import { useContext, useEffect, useState } from "react";
+import { Digimon } from "@/types/Digimon";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
 import styles from "@/styles/components/card-popup.module.css";
 
-export default function CardPopup({ digimon, handleClose }) {
+export type PopupProps = {
+  digimon: Digimon;
+  handleClose: () => void;
+};
+
+export default function CardPopup({ digimon, handleClose }: PopupProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);

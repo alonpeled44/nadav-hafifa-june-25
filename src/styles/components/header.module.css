@@ -167,7 +167,7 @@
             }
           }
 
-          & input {
+          & button {
             display: none;
           }
         }
@@ -184,7 +184,7 @@
   gap: 12px;
 
   & label {
-    & input {
+    & button {
       display: none;
     }
 
@@ -357,23 +357,20 @@
     height: 40px;
     width: 40px;
 
-    transition: height 0.3s ease;
-    transition: width 0.3s ease;
+    transition: height 0.3s ease, width 0.3s ease;
   }
 
   & .font-size-option-medium {
     height: 32px;
     width: 32px;
 
-    transition: height 0.3s ease;
-    transition: width 0.3s ease;
+    transition: height 0.3s ease, width 0.3s ease;
   }
 
   & .font-size-option-small {
     height: 24px;
     width: 24px;
 
-    transition: height 0.3s ease;
-    transition: width 0.3s ease;
+    transition: height 0.3s ease, width 0.3s ease;
   }
 }

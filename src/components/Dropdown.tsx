@@ -1,19 +1,13 @@
 import { useState } from "react";
+import { DropdownProps } from "@/types/components";
+
 import styles from "@/styles/components/dropdown.module.css";
 
-export default function Dropdown({
-  placeholder,
-  options,
-  selectedOptions,
-  isCheckbox = false,
-  onChange,
-  style,
-  children,
-}) {
+export default function Dropdown({ placeholder, children }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div style={style} className={styles["dropdown-wrapper"]}>
+    <div className={styles["dropdown-wrapper"]}>
       <button className={styles.dropdown} onClick={() => setIsOpen(!isOpen)}>
         {placeholder}
       </button>
