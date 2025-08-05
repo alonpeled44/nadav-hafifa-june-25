@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import updateTheme from "@/pages/api/updateTheme";
+import updateFontSize from "@/pages/api/updateFontSize";
 import { DisplayNameContext } from "@/context/DisplayNameContext";
 import CircleDropdown from "@/components/CircleDropdown";
 import SideMenu from "@/components/SideMenu";
@@ -9,7 +11,6 @@ import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import HorizontalDivider from "@/components/HorizontalDivider";
 import styles from "@/styles/components/header.module.css";
-
 type HeaderProps = {
   selectedTheme: string;
   setSelectedTheme: (theme: string) => void;
@@ -50,15 +51,44 @@ export default function Header({
     setSelectedTheme(selectedTheme === "light" ? "dark" : "light");
   };
 
-  const setTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setSelectedTheme(event.currentTarget.value);
+  const setTheme = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const newTheme = event.currentTarget.value;
+    const currentUser = localStorage.getItem("currentUser");
+    setSelectedTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    await fetch("/api/updateTheme", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ newTheme, currentUser }),
+    });
   };
 
-  const handleFontSize = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setSelectedFontSize(event.currentTarget.value);
+  const handleFontSize = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const newFontSize = event.currentTarget.value;
+    const currentUser = localStorage.getItem("currentUser");
+
+    setSelectedFontSize(newFontSize);
+    localStorage.setItem("font", newFontSize);
+    await fetch("/api/updateFontSize", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ newFontSize, currentUser }),
+    });
   };
 
   useEffect(() => {
+    if (displayName) {
+      fetch(`/api/fetchSettings?username=${encodeURIComponent(displayName)}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setSelectedTheme(data.theme);
+          setSelectedFontSize(data.fontSize);
+        })
+        .catch((err) => {
+          console.error("Failed to load user settings:", err);
+        });
+    }
+
     const root = document.documentElement;
 
     const primaryColor = `var(--font-size-${selectedFontSize})`;
@@ -73,7 +103,7 @@ export default function Header({
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [selectedFontSize, selectedTheme]);
+  }, [selectedFontSize, selectedTheme, displayName]);
 
   return (
     <header className={styles.header}>

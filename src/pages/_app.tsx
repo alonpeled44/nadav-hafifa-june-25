@@ -7,9 +7,7 @@ import DisplayNameContextProvider from "@/context/DisplayNameContext";
 import WindowWidthContextProvider from "@/context/WindowWidthContext";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
-import UserListContextProvider, {
-  UserListContext,
-} from "@/context/UserListContext";
+import UserListContextProvider from "@/context/UserListContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [displayName, setDisplayName] = useState("");

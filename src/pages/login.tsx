@@ -2,15 +2,17 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
-import styles from "@/styles/pages/login.module.css";
+import { UserListContext } from "@/context/UserListContext";
 import { User } from "./api/users";
+import styles from "@/styles/pages/login.module.css";
 
-export default function Login(users: User[]) {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
+  const users = useContext(UserListContext);
 
   const router = useRouter();
 
@@ -40,8 +42,6 @@ export default function Login(users: User[]) {
 
   return (
     <div className={styles["form-wrapper"]}>
-      <button onClick={() => console.log(users)}>showbruh</button>
-
       <form className={styles["login-form"]} onSubmit={handleSubmit}>
         {windowWidth > 1200 && <h1 className={styles["login-text"]}>login</h1>}
 
