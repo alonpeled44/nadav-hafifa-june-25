@@ -37,6 +37,8 @@ export default function Header({
     localStorage.removeItem("currentUser");
     router.push("/login");
     setDisplayName("");
+    setSelectedFontSize("medium");
+    setSelectedTheme("light");
   };
 
   const toggleOverlay = () => {
