@@ -1,3 +1,5 @@
+import { User } from "@/pages/api/users";
+
 export type DisplayNameContextType = {
   displayName: string;
   setDisplayName: (name: string) => void;

@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Button from "@/components/Button";
-import users from "@/lib/users";
 import { WindowWidthContext } from "@/context/WindowWidthContext";
+import { UserListContext } from "@/context/UserListContext";
+import { User } from "./api/users";
 import styles from "@/styles/pages/login.module.css";
 
 export default function Login() {
@@ -11,6 +12,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { windowWidth, setWindowWidth } = useContext(WindowWidthContext);
+  const users = useContext(UserListContext);
 
   const router = useRouter();
 
