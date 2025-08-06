@@ -58,11 +58,13 @@ export default function Header({
     const currentUser = localStorage.getItem("currentUser");
     setSelectedTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    await fetch("/api/updateTheme", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ newTheme, currentUser }),
-    });
+    if (currentUser !== "!") {
+      await fetch("/api/updateTheme", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ newTheme, currentUser }),
+      });
+    }
   };
 
   const handleFontSize = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -71,15 +73,17 @@ export default function Header({
 
     setSelectedFontSize(newFontSize);
     localStorage.setItem("font", newFontSize);
-    await fetch("/api/updateFontSize", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ newFontSize, currentUser }),
-    });
+    if (currentUser !== "!") {
+      await fetch("/api/updateFontSize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ newFontSize, currentUser }),
+      });
+    }
   };
 
   useEffect(() => {
-    if (displayName) {
+    if (displayName && displayName !== "guest") {
       fetch(`/api/fetchSettings?username=${encodeURIComponent(displayName)}`)
         .then((res) => res.json())
         .then((data) => {
