@@ -112,12 +112,12 @@ export default function Home() {
     setTypes([...typeData]);
   }
 
-  let dataLoadded = false;
+  let isDataLoadded = false;
 
   useEffect(() => {
-    if (!dataLoadded) {
+    if (!isDataLoadded) {
       loadData();
-      dataLoadded = true;
+      isDataLoadded = true;
     }
   }, []);
 

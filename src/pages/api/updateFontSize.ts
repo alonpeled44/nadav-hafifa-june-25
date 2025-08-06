@@ -5,10 +5,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { newFontSize, currentUser } = req.body;
+  const { newValue, currentUser } = req.body;
 
   try {
-    await setDatabaseFontSize(newFontSize, currentUser);
+    await setDatabaseFontSize(newValue, currentUser);
     res.status(200).json({ success: true });
   } catch (error) {
     res.status(500).json({ success: false, error: "sadge" });

@@ -49,35 +49,41 @@ export default function Header({
     setSettingsOpen(!settingsOpen);
   };
 
-  const toggleTheme = () => {
-    setSelectedTheme(selectedTheme === "light" ? "dark" : "light");
-  };
-
-  const setTheme = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const newTheme = event.currentTarget.value;
+  const toggleTheme = async () => {
     const currentUser = localStorage.getItem("currentUser");
-    setSelectedTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+    const newValue = selectedTheme === "light" ? "dark" : "light";
+
+    setSelectedTheme(newValue);
     if (currentUser !== "!") {
       await fetch("/api/updateTheme", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ newTheme, currentUser }),
+        body: JSON.stringify({ newValue, currentUser }),
       });
     }
   };
 
-  const handleFontSize = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const newFontSize = event.currentTarget.value;
+  const handleSettingsChange = async (
+    toChange: string,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const newValue = event.currentTarget.value;
     const currentUser = localStorage.getItem("currentUser");
 
-    setSelectedFontSize(newFontSize);
-    localStorage.setItem("font", newFontSize);
+    if (toChange === "fontSize") {
+      setSelectedFontSize(newValue);
+      localStorage.setItem("font", newValue);
+    } else if (toChange === "theme") {
+      setSelectedTheme(newValue);
+      localStorage.setItem("theme", newValue);
+    }
+
+    toChange = toChange.charAt(0).toUpperCase() + toChange.slice(1);
     if (currentUser !== "!") {
-      await fetch("/api/updateFontSize", {
+      await fetch(`/api/update${toChange}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ newFontSize, currentUser }),
+        body: JSON.stringify({ newValue, currentUser }),
       });
     }
   };
@@ -180,7 +186,10 @@ export default function Header({
                 <label
                   className={selectedTheme === "light" ? styles.selected : ""}
                 >
-                  <button value="light" onClick={setTheme} />
+                  <button
+                    value="light"
+                    onClick={(event) => handleSettingsChange("theme", event)}
+                  />
                   <div className={styles["image-wrapper"]}>
                     <img src="/sun-icon.png" />
                   </div>
@@ -190,7 +199,10 @@ export default function Header({
                 <label
                   className={selectedTheme === "dark" ? styles.selected : ""}
                 >
-                  <button value="dark" onClick={setTheme} />
+                  <button
+                    value="dark"
+                    onClick={(event) => handleSettingsChange("theme", event)}
+                  />
                   <div className={styles["image-wrapper"]}>
                     <img src="/moon-icon.png" />
                   </div>
@@ -208,7 +220,10 @@ export default function Header({
                     selectedFontSize === "large" ? styles.selected : ""
                   }
                 >
-                  <button value="large" onClick={handleFontSize} />
+                  <button
+                    value="large"
+                    onClick={(event) => handleSettingsChange("fontSize", event)}
+                  />
                   <div className={styles["image-wrapper"]}>
                     <img
                       className={styles["font-size-option-large"]}
@@ -223,7 +238,10 @@ export default function Header({
                     selectedFontSize === "medium" ? styles.selected : ""
                   }
                 >
-                  <button value="medium" onClick={handleFontSize} />
+                  <button
+                    value="medium"
+                    onClick={(event) => handleSettingsChange("fontSize", event)}
+                  />
                   <div className={styles["image-wrapper"]}>
                     <img
                       className={styles["font-size-option-medium"]}
@@ -238,7 +256,10 @@ export default function Header({
                     selectedFontSize === "small" ? styles.selected : ""
                   }
                 >
-                  <button value="small" onClick={handleFontSize} />
+                  <button
+                    value="small"
+                    onClick={(event) => handleSettingsChange("fontSize", event)}
+                  />
                   <div className={styles["image-wrapper"]}>
                     <img
                       className={styles["font-size-option-small"]}
@@ -282,7 +303,12 @@ export default function Header({
               <div className={styles["mobile-setting-options"]}>
                 {selectedFontSize !== "large" && (
                   <label>
-                    <button value="large" onClick={handleFontSize} />
+                    <button
+                      value="large"
+                      onClick={(event) =>
+                        handleSettingsChange("fontSize", event)
+                      }
+                    />
                     <div className={styles["image-wrapper"]}>
                       <img
                         className={styles["font-size-option-large"]}
@@ -294,7 +320,12 @@ export default function Header({
 
                 {selectedFontSize !== "medium" && (
                   <label>
-                    <button value="medium" onClick={handleFontSize} />
+                    <button
+                      value="medium"
+                      onClick={(event) =>
+                        handleSettingsChange("fontSize", event)
+                      }
+                    />
                     <div className={styles["image-wrapper"]}>
                       <img
                         className={styles["font-size-option-medium"]}
@@ -306,7 +337,12 @@ export default function Header({
 
                 {selectedFontSize !== "small" && (
                   <label>
-                    <button value="small" onClick={handleFontSize} />
+                    <button
+                      value="small"
+                      onClick={(event) =>
+                        handleSettingsChange("fontSize", event)
+                      }
+                    />
                     <div className={styles["image-wrapper"]}>
                       <img
                         className={styles["font-size-option-small"]}

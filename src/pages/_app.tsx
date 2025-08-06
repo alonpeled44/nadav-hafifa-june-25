@@ -5,9 +5,9 @@ import { AppProps } from "next/app";
 import { User } from "@/pages/api/users";
 import DisplayNameContextProvider from "@/context/DisplayNameContext";
 import WindowWidthContextProvider from "@/context/WindowWidthContext";
+import UserListContextProvider from "@/context/UserListContext";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
-import UserListContextProvider from "@/context/UserListContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [displayName, setDisplayName] = useState("");
