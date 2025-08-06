@@ -31,8 +31,9 @@ export default function App({ Component, pageProps }: AppProps) {
       router.push("/login");
     } else if (user === "!") {
       setDisplayName("guest");
-    } else {
+    } else if (user) {
       setDisplayName(user);
+      router.push("/");
     }
 
     document.body.classList.remove("theme-light", "theme-dark");

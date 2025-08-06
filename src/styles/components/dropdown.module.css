@@ -33,6 +33,7 @@
     padding: 8px;
 
     overflow-y: scroll;
+    overflow-x: hidden;
 
     background-color: var(--primary-color);
 
@@ -41,5 +42,19 @@
     border-radius: 12px;
 
     transition: height 0.3s ease;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: var(--secondary-color);
+
+      border-bottom-right-radius: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--text-color);
+      border-radius: 8px;
+    }
   }
 }
