@@ -112,8 +112,13 @@ export default function Home() {
     setTypes([...typeData]);
   }
 
+  let isDataLoadded = false;
+
   useEffect(() => {
-    loadData();
+    if (!isDataLoadded) {
+      loadData();
+      isDataLoadded = true;
+    }
   }, []);
 
   return (
